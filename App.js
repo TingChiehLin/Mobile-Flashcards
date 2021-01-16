@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import AppText from './app/component/AppText/AppText';
 
 export default function App() {
 
   const [outputText, setOutputText] = useState("Default Text");
 
   return (
-    <WelcomeScreen/>
+    <View>
+      <WelcomeScreen/>
+      <AppText>I love</AppText>
+    </View>
   );
 }
 

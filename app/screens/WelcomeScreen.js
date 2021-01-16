@@ -1,7 +1,8 @@
 import React from 'react'
 import { ImageBackground, StyleSheet, View, Image, Text, Button} from 'react-native';
-import color from '../config/color.js';
-import { AntDesign } from '@expo/vector-icons'; 
+import Color from '../config/color.js';
+import { AntDesign } from '@expo/vector-icons';
+import AppText from '../component/AppText';
 
 export default function WelcomeScreen() {
     return (
@@ -9,11 +10,10 @@ export default function WelcomeScreen() {
             style={styles.background}
         >
             <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require("../assets/favicon.png")}/>
-                <Text></Text>
+            <Image style={styles.logo} source={require("../assets/favicon.png")}/>
             </View>
-            <View style={styles.loginButton}></View>
-            <AntDesign name="right" size={24} color="black" />
+            {/* <AntDesign name="right" size={24} color="black" /> */}
+            <AppText>Welcome to Flash Card Game !</AppText>
             <Button
                 style={styles.button}
                 title="Click Me"
@@ -35,20 +35,16 @@ const styles = StyleSheet.create({
     background: {
         flex:1,
         backgroundColor: 'blue',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         alignItems: 'center'
     },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: color.primary
-    },
     logoContainer: {
-        top: 70,
-        position: "absolute",
+        justifyContent: 'center',
         alignItems:'center'
     },
     logo: {
+        top: 70,
+        position: "absolute",
         width: 100,
         height: 100,
     }

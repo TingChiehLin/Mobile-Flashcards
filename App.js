@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
-import AppText from './app/component/AppText/AppText';
+import AppText from './app/component/AppText';
 
 export default function App() {
 
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <View>
       <WelcomeScreen/>
-      <AppText>I love</AppText>
+      {/* <AppText>I love</AppText> */}
     </View>
   );
 }

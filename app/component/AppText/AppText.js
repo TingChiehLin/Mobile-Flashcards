@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 
 import styles from './style';
 
-function AppText(children) {
+function AppText({children}) {
     return (
         <div>
             <Text style={styles.text}>{children}</Text>

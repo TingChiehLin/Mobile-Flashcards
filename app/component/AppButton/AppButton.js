@@ -8,7 +8,7 @@ import AppText from '../AppText/AppText';
 export default function AppButton({title, onPress}) {
     return (
         <TouchableOpacity style={styles.button} onPress={onPress}>
-            <AppText>Welcome to Flash Card Game !</AppText>
+            <AppText>{title}</AppText>
         </TouchableOpacity>
     )
 }

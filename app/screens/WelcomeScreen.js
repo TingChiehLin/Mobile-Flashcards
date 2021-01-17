@@ -9,6 +9,7 @@ export default function WelcomeScreen() {
     return (
         <ImageBackground 
             style={styles.background}
+            source={require("../assets/background.jpg")}
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require("../assets/splash.png")}/>
@@ -38,11 +39,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     background: {
-        flex:1,
-        backgroundColor: 'blue',
-        backgroundImage: 'url(../assets/background.jpg)',
-        justifyContent: 'center',
-        alignItems: 'center'
+        flexGrow:1,
+        height:"100%",
+        resizeMode: "cover"
     },
     logoContainer: {
         justifyContent: 'center',

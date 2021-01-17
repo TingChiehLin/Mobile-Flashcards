@@ -12,7 +12,6 @@ export default function App() {
   return (
     <View>
       <WelcomeScreen/>
-      {/* <AppText>I love</AppText> */}
     </View>
   );
 }

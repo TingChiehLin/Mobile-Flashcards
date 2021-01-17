@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, View, Image, Text, Button} from 'react-nat
 import Color from '../config/color.js';
 import { AntDesign } from '@expo/vector-icons';
 import AppText from '../component/AppText';
+import AppButton from '../component/AppButton/AppButton';
 
 export default function WelcomeScreen() {
     return (
@@ -14,14 +15,18 @@ export default function WelcomeScreen() {
             </View>
             {/* <AntDesign name="right" size={24} color="black" /> */}
             <AppText>Welcome to Flash Card Game !</AppText>
-            <Button
+            <AppButton
+                title="Start"
+                onPress={ () => console.log("Start")}
+            />
+            {/* <Button
                 style={styles.button}
                 title="Click Me"
                 onPress={ ()=>
                     console.log("Start")
                 }
-            >
-            </Button>
+            > 
+            </Button>*/}
         </ImageBackground>
     )
 }

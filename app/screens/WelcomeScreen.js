@@ -11,7 +11,7 @@ export default function WelcomeScreen() {
             style={styles.background}
         >
             <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require("../assets/favicon.png")}/>
+                <Image style={styles.logo} source={require("../assets/splash.png")}/>
             </View>
             {/* <AntDesign name="right" size={24} color="black" /> */}
             <AppText>Welcome to Flash Card Game !</AppText>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     background: {
         flex:1,
         backgroundColor: 'blue',
+        backgroundImage: 'url(../assets/background.jpg)',
         justifyContent: 'center',
         alignItems: 'center'
     },

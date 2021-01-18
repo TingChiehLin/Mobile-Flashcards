@@ -2,12 +2,12 @@ import React from 'react'
 import { Touchable } from 'react-native';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
-import Colors from '../../config/color';
+import colors from '../../config/color';
 import AppText from '../AppText/AppText';
 
-export default function AppButton({title, onPress}) {
+export default function AppButton({title, onPress, color = "primary"}) {
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: colors[color]}]} onPress={onPress}>
             <AppText>{title}</AppText>
         </TouchableOpacity>
     )
@@ -15,15 +15,16 @@ export default function AppButton({title, onPress}) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: Colors.primary,
+        backgroundColor: colors.primary,
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
-        width: '100%'
+        width: '100%',
+        marginVertical: 10
     },
     text: {
-        color: Colors.white,
+        color: colors.white,
         fontSize: 18,
         textTransform: 'uppercase',
         fontWeight: 'bold'

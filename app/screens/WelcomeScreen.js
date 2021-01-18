@@ -8,18 +8,27 @@ import AppButton from '../component/AppButton/AppButton';
 export default function WelcomeScreen() {
     return (
         <ImageBackground 
+            blurRadius={5}
             style={styles.background}
             source={require("../assets/background.jpg")}
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require("../assets/splash.png")}/>
+                <Text style={styles.tagline}>Flash to see your answer !</Text>
             </View>
             {/* <AntDesign name="right" size={24} color="black" /> */}
-            <AppText>Welcome to Flash Card Game !</AppText>
-            <AppButton
-                title="Start"
-                onPress={ () => console.log("Start")}
-            />
+            {/* <AppText>Welcome to Flash Card Game !</AppText> */}
+            <View style={styles.buttonsContainer}>
+                <AppButton
+                    title="Start"
+                    onPress={ () => console.log("Start")}
+                />
+                <AppButton
+                    title="Start"
+                    onPress={ () => console.log("register")}
+                    color="secondary"
+                />
+            </View>
             {/* <Button
                 style={styles.button}
                 title="Click Me"
@@ -33,15 +42,19 @@ export default function WelcomeScreen() {
 }
 
 const styles = StyleSheet.create({
+    buttonsContainer: {
+        padding: 20,
+        width: "100%",
+    },
     button: {
         width: 300,
         height: 100,
         borderRadius: 10
     },
     background: {
-        flexGrow:1,
-        height:"100%",
-        resizeMode: "cover"
+        flex:1,
+        resizeMode: "cover",
+        justifyContent: "center"
     },
     logoContainer: {
         justifyContent: 'center',
@@ -52,5 +65,10 @@ const styles = StyleSheet.create({
         position: "absolute",
         width: 100,
         height: 100,
+    },
+    tagline: {
+        fontSize: 25,
+        fontWeight: "600",
+        paddingVertical: 20,
     }
 })

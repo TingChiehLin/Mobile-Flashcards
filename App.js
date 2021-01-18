@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 're
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
 
 export default function App() {
 

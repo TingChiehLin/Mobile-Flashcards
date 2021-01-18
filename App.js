@@ -20,8 +20,8 @@ const StackNavigator = () => (
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'Montserrat': require('./assets/fonts/Montserrat/Montserrat-Regular.ttf'),
-    'Montserrat-bold': require('./assets/fonts/Montserrat/Montserrat-Bold.ttf'),
+    'Montserrat': require('./app/assets/fonts/Montserrat/Montserrat-Regular.ttf'),
+    'Montserrat-bold': require('./app/assets/fonts/Montserrat/Montserrat-Bold.ttf'),
   });
 };
 

@@ -5,13 +5,28 @@ import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 're
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
 import { createStackNavigator } from '@react-navigation/stack';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
 const Stack = createStackNavigator();
 
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'Montserrat': require('./assets/fonts/Montserrat/Montserrat-Regular.ttf'),
+    'Montserrat-bold': require('./assets/fonts/Montserrat/Montserrat-Bold.ttf'),
+  });
+};
 
 export default function App() {
-
+  const [dataLoaded, setDataLoaded] = useState(false);
   const [outputText, setOutputText] = useState("Default Text");
+
+  if (!dataLoaded) {
+    return <AppLoading startAsync={fetchFonts} 
+    onFinish={() => setDataLoaded(true)}
+    onError={(err) => console.log(err)}
+    />;
+  }
 
   return (
     <View>

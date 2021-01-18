@@ -7,8 +7,16 @@ import AppText from './app/component/AppText';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
+const StackNavigator = () => (
+  <Stack.Navigator initialRouteName="Home">
+    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="AddDeck" component={AddDeck} />
+    <Stack.Screen name="DeckDetails" component={DeckDetails} />
+  </Stack.Navigator>
+)
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,9 +37,10 @@ export default function App() {
   }
 
   return (
-    <View>
+    <NavigationContainer>
+      <StackNavigator/>
       <WelcomeScreen/>
-    </View>
+    </NavigationContainer>
   );
 }
 

@@ -4,8 +4,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/color';
-
 import AddDeck from './AddDeck';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import DeckDetails from './DeckDetails';
+const Stack = createStackNavigator();
+
+const StackNavigator = () => (
+    <Stack.Navigator 
+    >
+        <Stack.Screen name="Deck1" component={DeckDetails} />
+    </Stack.Navigator>
+)
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
@@ -30,8 +40,8 @@ const TabNavigator = () => {
 
 export default function Home({ naigation }) {
     return (
-        <NavigationContainer>
+        <View>
             <TabNavigator />
-        </NavigationContainer>
+        </View>
     )
 }

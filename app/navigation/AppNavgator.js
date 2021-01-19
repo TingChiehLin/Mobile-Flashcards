@@ -7,7 +7,7 @@ import AddDeck from '../screens/AddDeck';
 
 const Stack = createStackNavigator();
 
-const HomeNavgator = () => (
+const AppNavgator = () => (
     <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home}/>
@@ -15,4 +15,4 @@ const HomeNavgator = () => (
     </Stack.Navigator>
 )
 
-export default HomeNavgator;
+export default AppNavgator;

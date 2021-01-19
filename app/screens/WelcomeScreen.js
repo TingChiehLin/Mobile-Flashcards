@@ -13,7 +13,7 @@ export default function WelcomeScreen({ navigation }) {
             source={require("../assets/background.jpg")}
         >
             <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require("../assets/splash.png")}/>
+                <Image style={styles.logo} source={require("../assets/logo.svg")}/>
                 <Text style={styles.tagline}>Flash to see your answer !</Text>
             </View>
             {/* <AntDesign name="right" size={24} color="black" /> */}
@@ -21,22 +21,10 @@ export default function WelcomeScreen({ navigation }) {
             <View style={styles.buttonsContainer}>
                 <AppButton
                     title="Start"
-                    onPress={ () => console.log("Start")}
-                />
-                <AppButton
-                    title="Start"
                     onPress={ () => navigation.navigate('Home')}
                     color="secondary"
                 />
             </View>
-            {/* <Button
-                style={styles.button}
-                title="Click Me"
-                onPress={ ()=>
-                    console.log("Start")
-                }
-            > 
-            </Button>*/}
         </ImageBackground>
     )
 }
@@ -44,31 +32,34 @@ export default function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     buttonsContainer: {
         padding: 20,
-        width: "100%",
+        width: 300,
+        position:'absolute',
+        bottom: 20,
+        left:'50%',
+        transform: [{ translateX: '-50%' }]
     },
     button: {
-        width: 300,
+        width: 500,
         height: 100,
         borderRadius: 10
     },
     background: {
         flex:1,
         resizeMode: "cover",
-        justifyContent: "center"
     },
     logoContainer: {
-        justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginVertical: 50,
     },
     logo: {
-        top: 70,
         position: "absolute",
-        width: 100,
-        height: 100,
+        width: 200,
+        height: 200,
+        marginVertical: 50,
     },
     tagline: {
+        color: "white",
         fontSize: 25,
         fontWeight: "600",
-        paddingVertical: 20,
     }
 })

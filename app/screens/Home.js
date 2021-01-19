@@ -28,7 +28,7 @@ const TabNavigator = () => {
         }}
     >
         <Tab.Screen 
-            name="Home" 
+            name="Menu" 
             component={Home} 
             options={{
                 tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color}/>

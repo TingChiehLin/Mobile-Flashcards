@@ -12,7 +12,7 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Home from './app/screens/Home.js';
 import DeckDetails from './app/screens/DeckDetails.js';
 import AddDeck from './app/screens/AddDeck.js';
-import HomeNavgator from './app/navigation/HomeNavgator';
+import AppNavgator from './app/navigation/AppNavgator';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <HomeNavgator/>
+      <AppNavgator/>
     </NavigationContainer>
   );
 }

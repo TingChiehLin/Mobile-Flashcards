@@ -5,18 +5,40 @@ import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 're
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import { NavigationContainer } from '@react-navigation/native';
+import colors from './app/config/color';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import Home from './app/screens/Home.js';
+import DeckDetails from './app/screens/DeckDetails.js';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (
-  <Stack.Navigator initialRouteName="Home">
-    <Stack.Screen name="Home" component={Home} />
+  <Stack.Navigator 
+    initialRouteName="Welcome"
+    screenOptions={{
+      headerStyle: { backgroundColor: colors.primary },
+      headerTintColor: "white",
+    }}
+  >
+    <Stack.Screen name="Welcome" component={WelcomeScreen} />
+    <Stack.Screen 
+      name="Home" 
+      component={Home} 
+    />
     <Stack.Screen name="AddDeck" component={AddDeck} />
     <Stack.Screen name="DeckDetails" component={DeckDetails} />
   </Stack.Navigator>
 )
+
+// const Link = ({ navigation }) => {
+//   const navigation = useNavigation();
+//   return (
+//     <Button
+//       title=""
+//     />
+//   )
+// }
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -39,7 +61,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <StackNavigator/>
-      <WelcomeScreen/>
     </NavigationContainer>
   );
 }

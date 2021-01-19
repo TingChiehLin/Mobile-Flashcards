@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import AppText from '../component/AppText';
 import AppButton from '../component/AppButton/AppButton';
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground 
             blurRadius={5}
@@ -25,7 +25,7 @@ export default function WelcomeScreen() {
                 />
                 <AppButton
                     title="Start"
-                    onPress={ () => console.log("register")}
+                    onPress={ () => navigation.navigate('Home')}
                     color="secondary"
                 />
             </View>

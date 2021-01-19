@@ -11,6 +11,7 @@ import colors from './app/config/color';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Home from './app/screens/Home.js';
 import DeckDetails from './app/screens/DeckDetails.js';
+import AddDeck from './app/screens/AddDeck.js';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => (

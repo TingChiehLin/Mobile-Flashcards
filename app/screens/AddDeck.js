@@ -1,15 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-const DeckDetails = () => {
+const AddDeck = () => {
     return (
         <View>
-
+            
         </View>
     )
 }
 
-export default DeckDetails
+export default AddDeck
 
 const styles = StyleSheet.create({
     

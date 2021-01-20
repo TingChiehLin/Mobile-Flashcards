@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 'react-native';
-
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
 import AppLoading from 'expo-app-loading';

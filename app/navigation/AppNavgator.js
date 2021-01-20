@@ -11,7 +11,6 @@ const AppNavgator = () => (
     <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home}/>
-        {/* <Stack.Screen name="Welcome" component={WelcomeScreen}/> */}
     </Stack.Navigator>
 )
 

@@ -11,11 +11,17 @@ import DeckDetails from './DeckDetails';
 const Stack = createStackNavigator();
 
 const StackNavigator = () => (
-    <Stack.Navigator 
-    >
+    <Stack.Navigator>
         <Stack.Screen name="Deck1" component={DeckDetails} />
     </Stack.Navigator>
 )
+
+const Menu = () => {
+    return(
+     <View>
+       <Text>Hello</Text>
+     </View>)
+}
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
@@ -29,7 +35,7 @@ const TabNavigator = () => {
     >
         <Tab.Screen 
             name="Menu" 
-            component={Home} 
+            component={Menu} 
             options={{
                 tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color}/>
             }}

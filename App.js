@@ -4,44 +4,21 @@ import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 're
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
-import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import colors from './app/config/color';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import Home from './app/screens/Home.js';
-import DeckDetails from './app/screens/DeckDetails.js';
-import AddDeck from './app/screens/AddDeck.js';
 import AppNavgator from './app/navigation/AppNavgator';
 
-const Stack = createStackNavigator();
-const StackNavigator = () => (
-  <Stack.Navigator 
-    initialRouteName="Welcome"
-    screenOptions={{
-      headerStyle: { backgroundColor: colors.primary },
-      headerTintColor: "white",
-    }}
-  >
-    <Stack.Screen name="Welcome" component={WelcomeScreen} />
-    <Stack.Screen 
-      name="Home" 
-      component={Home}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen name="AddDeck" component={AddDeck} ptions={{ title: 'Add Deck' }}/>
-    <Stack.Screen name="DeckDetails" component={DeckDetails} options={{ title: 'Deck Details'}}/>
-  </Stack.Navigator>
-)
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 
-// const Link = ({ navigation }) => {
-//   const navigation = useNavigation();
-//   return (
-//     <Button
-//       title=""
-//     />
-//   )
-// }
+import decksReducer from './app/store/reducers/decks';
+
+const rootReducer = combineReducers({
+  decks: decksReducer
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -62,9 +39,11 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <AppNavgator/>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <AppNavgator/>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

@@ -4,6 +4,7 @@ import Color from '../config/color.js';
 import { AntDesign } from '@expo/vector-icons';
 import AppText from '../component/AppText';
 import AppButton from '../component/AppButton/AppButton';
+import Logo from '../assets/logo.svg';
 
 export default function WelcomeScreen({ navigation }) {
     return (
@@ -13,7 +14,7 @@ export default function WelcomeScreen({ navigation }) {
             source={require("../assets/background.jpg")}
         >
             <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require("../assets/logo.svg")}/>
+                <Image style={styles.logo} source={Logo}/>
                 <Text style={styles.tagline}>Flash to see your answer !</Text>
             </View>
             {/* <AntDesign name="right" size={24} color="black" /> */}
@@ -35,8 +36,7 @@ const styles = StyleSheet.create({
         width: 300,
         position:'absolute',
         bottom: 20,
-        left:'50%',
-        transform: [{ translateX: '-50%' }]
+        alignSelf:'center',
     },
     button: {
         width: 500,

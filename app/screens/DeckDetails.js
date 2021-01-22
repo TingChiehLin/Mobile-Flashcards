@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 export default function DeckDetails({ title, subTitle, image, onPress}) {
 
@@ -7,7 +7,7 @@ export default function DeckDetails({ title, subTitle, image, onPress}) {
 
     return (
         <View>
-            
+            <Text>DeckDetails</Text>
         </View>
     )
 }

@@ -1,54 +1,58 @@
 import React from 'react'
 import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/color';
 import AddDeck from './AddDeck';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { Ionicons } from '@expo/vector-icons';
 import DeckDetails from './DeckDetails';
-const Stack = createStackNavigator();
 
-// const StackNavigator = () => (
-//     <Stack.Navigator>
-//         <Stack.Screen name="Deck1" component={DeckDetails} />
-//     </Stack.Navigator>
-// )
-
-// const Menu = () => {
-//     return(
-//      <View>
-//        <Text>Hello</Text>
-//      </View>)
-// }
-
-// const Tab = createBottomTabNavigator();
-// const TabNavigator = () => {
-//     <Tab.Navigator
-//         tabBarOptions={{
-//             activeBackgroundColor: colors.primary,
-//             activeTintColor: "white",
-//             inactiveBackgroundColor: '#eee',
-//             inactiveTintColor: "black"
-//         }}
-//     >
-//         <Tab.Screen 
-//             name="Menu" 
-//             component={Menu} 
-//             options={{
-//                 tabBarIcon: ({ size, color }) => <MaterialCommunityIcons name="home" size={size} color={color}/>
-//             }}
-//         />
-//         <Tab.Screen name="AddDeck" component={AddDeck} />
-//     </Tab.Navigator>
-// }
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => {
+    return  <Tab.Navigator
+                screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
+                    if (route.name === 'Deck Detail') {
+                    if(Platform.OS === 'ios') {
+                        iconName = focused
+                        ? 'ios-file-tray-stacked'
+                        : 'ios-file-tray-stacked-outline';
+                    } else {
+                        iconName = focused
+                        ? 'file-tray-stacked'
+                        : 'file-tray-stacked-outline';
+                    }
+                    } else if (route.name === 'Add Deck') {
+                    if(Platform.OS === 'ios') {
+                        iconName = focused
+                        ? 'ios-add'
+                        : 'ios-add-outline';
+                    } else {
+                        iconName = focused
+                        ? 'add'
+                        : 'add-outline';
+                    }
+                    }
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                })}
+                tabBarOptions={{
+                activeTintColor: 'tomato',
+                inactiveTintColor: 'gray',
+                }}
+            >
+                <Tab.Screen name="Deck Detail" component={DeckDetails} />
+                <Tab.Screen name="Add Deck" component={AddDeck} />
+        </Tab.Navigator>
+}
 
 export default function Home({ naigation }) {
     return (
         <View>
-            {/* <TabNavigator /> */}
-           <Text>cccc</Text>
+            <TabNavigator/>
         </View>
     )
 }
+
+
+

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 const AddDeck = () => {
     return (
         <View>
-            
+            <Text>Add Desk</Text>
         </View>
     )
 }

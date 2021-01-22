@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from '../config/color';
 import AddDeck from './AddDeck';
 import { Ionicons } from '@expo/vector-icons';
+import DeckListView from './DeckListView';
 import DeckDetails from './DeckDetails';
 
 const Tab = createBottomTabNavigator();
@@ -12,7 +13,7 @@ const TabNavigator = () => {
                 screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === 'Deck Detail') {
+                    if (route.name === 'DeckListView') {
                     if(Platform.OS === 'ios') {
                         iconName = focused
                         ? 'ios-file-tray-stacked'
@@ -41,16 +42,14 @@ const TabNavigator = () => {
                 inactiveTintColor: 'gray',
                 }}
             >
-                <Tab.Screen name="Deck Detail" component={DeckDetails} />
+                <Tab.Screen name="DeckListView" component={DeckListView} />
                 <Tab.Screen name="Add Deck" component={AddDeck} />
         </Tab.Navigator>
 }
 
 export default function Home({ naigation }) {
     return (
-        <View>
-            <TabNavigator/>
-        </View>
+        <TabNavigator/>
     )
 }
 

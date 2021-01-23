@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator, createAppContainer } from '@react-navigation/stack';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import Home from '../screens/Home';
+import DeckDetails from '../screens/DeckDetails';
 
 const Stack = createStackNavigator();
 
@@ -9,6 +10,7 @@ const AppNavgator = () => (
     <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="DeckDetails" component={DeckDetails}/>
     </Stack.Navigator>
 )
 

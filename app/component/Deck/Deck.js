@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import colors from '../../config/color';
 
 const Deck = ({title, number, color, navigation}) => {
     return (
-        <View style={[styles.deck, color]}> 
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.number}>{number}</Text>
-        </View>
+        <TouchableWithoutFeedback 
+            onPress={() => navigation.navigate('DeckDetails')}
+        >
+            <View style={[styles.deck, color]}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.number}>{number}</Text>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 

@@ -2,9 +2,9 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import colors from '../../config/color';
 
-const Deck = ({title, number}) => {
+const Deck = ({title, number, color, navigation}) => {
     return (
-        <View style={styles.deck}> 
+        <View style={[styles.deck, color]}> 
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.number}>{number}</Text>
         </View>
@@ -25,10 +25,9 @@ const styles = StyleSheet.create({
     deck: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
         height: 200,
-        padding: 20,
-        marginVertical: 15,
+        marginHorizontal: 10,
+        marginVertical: 20,
         borderRadius: 15,
         backgroundColor:'purple',
         shadowColor: 'black',

@@ -45,6 +45,6 @@ export default function DeckDetails({ title, number, onPress}) {
 
 const styles = StyleSheet.create({
     titleContainer: {
-
+        
     }
 })

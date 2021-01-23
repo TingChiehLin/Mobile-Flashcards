@@ -5,6 +5,8 @@ import AppButton from '../component/AppButton/AppButton';
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 
+import colors from  '../config/color';
+
 export default function DeckDetails({ title, number, onPress}) {
 
     // useEffect(() => {
@@ -24,7 +26,7 @@ export default function DeckDetails({ title, number, onPress}) {
     // }
 
     return (
-        <View>
+        <View style={styles.container}>
             <View styles={styles.titleContainer}>
                 <Text>{title}</Text>
                 <Text>{number}</Text>
@@ -32,7 +34,7 @@ export default function DeckDetails({ title, number, onPress}) {
             <AppButton
                     title="Add Card"
                     onPress={ () => console.log("Add Card")}
-                    color="white"
+                    color="secondary"
             />
             <AppButton
                     title="Start Quiz"
@@ -44,7 +46,15 @@ export default function DeckDetails({ title, number, onPress}) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
+    },
     titleContainer: {
-        
+        color:'black',
+        fontSize:32,
+        padding: 15,
+        marginVertical:35,
     }
 })

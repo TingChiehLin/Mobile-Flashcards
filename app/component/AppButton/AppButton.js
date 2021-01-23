@@ -1,7 +1,6 @@
 import React from 'react'
 import { Touchable } from 'react-native';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../../config/color';
 import AppText from '../AppText/AppText';
 
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
-        width: '100%',
+        width:300,
         marginVertical: 10
     },
     text: {

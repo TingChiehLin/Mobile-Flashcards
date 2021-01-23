@@ -32,11 +32,8 @@ export default function WelcomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     buttonsContainer: {
-        padding: 20,
-        width: 300,
         position:'absolute',
-        bottom: 20,
-        alignSelf:'center',
+        bottom: 50,
     },
     button: {
         width: 500,
@@ -46,6 +43,7 @@ const styles = StyleSheet.create({
     background: {
         flex:1,
         resizeMode: "cover",
+        alignItems: "center"
     },
     logoContainer: {
         alignItems:'center',

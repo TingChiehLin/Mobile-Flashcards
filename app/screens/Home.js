@@ -5,7 +5,6 @@ import colors from '../config/color';
 import AddDeck from './AddDeck';
 import { Ionicons } from '@expo/vector-icons';
 import DeckListView from './DeckListView';
-import DeckDetails from './DeckDetails';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
@@ -47,7 +46,7 @@ const TabNavigator = () => {
         </Tab.Navigator>
 }
 
-export default function Home({ naigation }) {
+export default function Home() {
     return (
         <TabNavigator/>
     )

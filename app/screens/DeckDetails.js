@@ -7,8 +7,8 @@ import * as Permissions from "expo-permissions";
 
 import colors from  '../config/color';
 
-export default function DeckDetails({ title, number, onPress}) {
-
+export default function DeckDetails({ route, onPress}) {
+    const { title, number} = route.params;
     // useEffect(() => {
     //     registerForPushNotifications();
     // }, []);
@@ -27,9 +27,9 @@ export default function DeckDetails({ title, number, onPress}) {
 
     return (
         <View style={styles.container}>
-            <View styles={styles.titleContainer}>
-                <Text>{title}</Text>
-                <Text>{number}</Text>
+            <View style={styles.titleContainer}>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.number}>{number}</Text>
             </View>
             <AppButton
                     title="Add Card"
@@ -46,15 +46,25 @@ export default function DeckDetails({ title, number, onPress}) {
 }
 
 const styles = StyleSheet.create({
+    titleContainer: {
+        color:'black',
+        fontSize:64,
+        justifyContent:'center',
+        alignItems:'center',
+        marginVertical:100
+    },
+    title: {
+        fontSize: 32,
+        fontWeight: "600",
+        marginVertical:25
+    },
+    number: {
+        fontSize: 18,
+        fontWeight: "100",
+    },
     container: {
         flex:1,
         justifyContent:'center',
         alignItems:'center'
-    },
-    titleContainer: {
-        color:'black',
-        fontSize:32,
-        padding: 15,
-        marginVertical:35,
     }
 })

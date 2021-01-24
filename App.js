@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 import decksReducer from './app/store/reducers/decks';
 
 const rootReducer = combineReducers({
-  decks: decksReducer
+  decks: decksReducer,
 });
 
 const store = createStore(rootReducer);

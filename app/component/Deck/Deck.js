@@ -9,8 +9,8 @@ const Deck = ({title, number, color}) => {
     return (
         <TouchableWithoutFeedback 
             onPress={() => navigation.navigate('DeckDetails', {
-                title:title,
-                number:number
+                title,
+                number
             })}
         >
             <View style={[styles.deck, color]}>

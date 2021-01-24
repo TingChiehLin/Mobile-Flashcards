@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     tagline: {
         color: "white",
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: "600",
     }
 })

@@ -2,6 +2,7 @@
 
 const initialState = {
     decks:[],
+    question:[]
 };
 
 const decksReducer = (state = initialState, action) => {

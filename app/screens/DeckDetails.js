@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
-
+import AppText from '../component/AppText/AppText';
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
-
 import colors from  '../config/color';
 
 export default function DeckDetails({ route, onPress}) {
     const { title, number} = route.params;
+
     // useEffect(() => {
     //     registerForPushNotifications();
     // }, []);
@@ -29,7 +29,7 @@ export default function DeckDetails({ route, onPress}) {
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.number}>{number}</Text>
+                <Text style={styles.number}>{`${number} cards`}</Text>
             </View>
             <AppButton
                     title="Add Card"
@@ -41,6 +41,11 @@ export default function DeckDetails({ route, onPress}) {
                     onPress={ () => console.log("Start Quiz")}
                     color="primary"
             />
+            <Text style={styles.text}
+                onPress={() => console.log("Delete")}
+            >
+                Delete Deck
+            </Text>
         </View>
     )
 }
@@ -66,5 +71,9 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center'
+    },
+    text: {
+        color:'tomato',
+        marginVertical:25
     }
 })

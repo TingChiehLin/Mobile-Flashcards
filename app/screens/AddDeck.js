@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { TextInput } from 'react-native';
+import { connect } from 'react-redux';
 
 const AddDeck = () => {
     const [deckTitleName, setdeckTitleName] = useState('');

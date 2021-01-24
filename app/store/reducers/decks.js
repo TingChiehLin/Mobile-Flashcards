@@ -1,12 +1,14 @@
-// import { DECKS } from '';
+import DOCKS from '../../../utils/Api';
 
 const initialState = {
-    decks:[],
+    availableDecks:[],
     question:[]
 };
 
 const decksReducer = (state = initialState, action) => {
+    
+    
     return state;
-}
+};
 
 export default decksReducer;

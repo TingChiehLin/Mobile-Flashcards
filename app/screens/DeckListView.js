@@ -13,6 +13,7 @@ const DeckListView = (props) => {
     )
     const dispatch = useDispatch()
     const deck_result = () => _deck_result();
+    console.log(dispatch);
     console.log(deck_result);
     return <View style={styles.container}>
         <Deck title={"Udacity"} number={35} color={{backgroundColor:'blue'}} />

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     background: {
         flex:1,
-        resizeMode: "cover",
+        resizeMode: "cover", 
         alignItems: "center"
     },
     logoContainer: {

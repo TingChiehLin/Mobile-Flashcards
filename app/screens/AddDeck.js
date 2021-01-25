@@ -12,7 +12,7 @@ const AddDeck = () => {
             <Text style={styles.title}>What is the title of your new deck?</Text>
             <TextInput
                 clearButtonMode="always"
-                keyboardType="characters"
+                keyboardType="default"
                 maxLength={30}
                 onChangeText={text => setdeckTitleName(text)}
                 placeholder="Deck Title"

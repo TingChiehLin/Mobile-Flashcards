@@ -1,4 +1,5 @@
-import DOCKS from '../../../utils/Api';
+import * as actionType from '../actions/actionsType';
+import { updateObject } from '../../../utils/utility';
 
 const initialState = {
     availableDecks:[],
@@ -6,9 +7,25 @@ const initialState = {
 };
 
 const decksReducer = (state = initialState, action) => {
-    
-    
-    return state;
+    switch (action.type) {
+        case actionType.RECEIVE_DECKS:
+            return updateObject(
+                state, {
+
+        })
+        case actionType.ADD_DECK:
+            return updateObject(
+                state, {
+
+        })
+        case actionType.DELETE_DECK:
+            return updateObject(
+                state, {
+
+        })
+        default:
+            return state;
+    }
 };
 
 export default decksReducer;

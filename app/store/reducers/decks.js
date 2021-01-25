@@ -11,18 +11,18 @@ const decksReducer = (state = initialState, action) => {
         case actionType.RECEIVE_DECKS:
             return updateObject(
                 state, {
-
-        })
+                    availableDecks: action.availableDecks
+            })
         case actionType.ADD_DECK:
             return updateObject(
                 state, {
 
-        })
+            })
         case actionType.DELETE_DECK:
             return updateObject(
                 state, {
 
-        })
+            })
         default:
             return state;
     }

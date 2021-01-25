@@ -5,8 +5,10 @@ import AppText from '../component/AppText/AppText';
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import colors from  '../config/color';
+import { useNavigation } from '@react-navigation/native';
 
-export default function DeckDetails({ route, onPress}) {
+export default function DeckDetails({ route }) {
+    const navigation = useNavigation();
     const { title, number} = route.params;
 
     // useEffect(() => {
@@ -33,12 +35,12 @@ export default function DeckDetails({ route, onPress}) {
             </View>
             <AppButton
                     title="Add Card"
-                    onPress={ () => console.log("Add Card")}
+                    onPress={ () => navigation.navigate('AddCard')}
                     color="secondary"
             />
             <AppButton
                     title="Start Quiz"
-                    onPress={ () => console.log("Start Quiz")}
+                    onPress={ () => navigation.navigate('Quiz')}
                     color="primary"
             />
             <Text style={styles.text}

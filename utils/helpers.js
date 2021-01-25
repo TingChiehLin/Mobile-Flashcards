@@ -10,10 +10,21 @@ export async function _getDecks () {
         if (data  === null) {
           AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(defaultDecks));
         }
-        return data  === null ? defaultDecks : JSON.parse(data);
         
+        return data  === null ? defaultDecks : JSON.parse(data);
     } catch (err) {
         console.log(err);
     }
 }
 
+export async function _getDeck () {
+
+}
+
+export async function _saveDeckTitle () {
+    
+}
+
+export async function _addCardToDeck () {
+    
+}

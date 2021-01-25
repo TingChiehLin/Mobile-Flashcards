@@ -4,6 +4,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import Home from '../screens/Home';
 import DeckDetails from '../screens/DeckDetails';
 import Quiz from '../screens/Quiz';
+import AddCard from '../screens/AddCard';
 
 const Stack = createStackNavigator();
 
@@ -12,6 +13,7 @@ const AppNavgator = () => (
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="DeckDetails" component={DeckDetails}/>
+        <Stack.Screen name="AddCard" component={AddCard}/>
         <Stack.Screen name="Quiz" component={Quiz}/>
     </Stack.Navigator>
 )

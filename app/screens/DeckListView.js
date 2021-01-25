@@ -6,11 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deck_result } from '../store/actions';
 
 const DeckListView = (props) => { 
+    // const [deckArray, setDeckArray] = useState([]);
+
     const decks = useSelector(
         state => state.decks.availableDecks
     )
-    
-    console.log(decks)
+    const dispatch = useDispatch()
+    const deck_result = () => _deck_result();
+    console.log(deck_result);
     return <View style={styles.container}>
         <Deck title={"Udacity"} number={35} color={{backgroundColor:'blue'}} />
         <Deck color={{backgroundColor: 'red'}}/>

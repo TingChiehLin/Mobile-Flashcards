@@ -3,14 +3,17 @@
 // saveDeckTitle: take in a single title argument and add it to the decks.
 // addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
 
-export async function getDecks () {
+export async function _getDecks () {
     try {
         const data  = await AsyncStorage.getItem(DECK_STORAGE_KEY);
+
         if (data  === null) {
           AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(defaultDecks));
         }
         return data  === null ? defaultDecks : JSON.parse(data);
+        
     } catch (err) {
         console.log(err);
     }
 }
+

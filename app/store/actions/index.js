@@ -1,3 +1,3 @@
 export {
-    
-} from './deck';
+    deck_result
+} from './decks';

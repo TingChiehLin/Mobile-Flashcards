@@ -25,7 +25,12 @@ const DeckListView = (props) => {
     const decks = useSelector(
         state => state.decks.availableDecks
     )
-    // const deckId = 
+
+    // const deckId = props.navigation.getParm('deckId');
+    //const selectedDeck = decks.find(deck => deck.id ===deckId);
+    // props.navigation.setParams({deckTitle: selectedDeck.title});
+    
+
     useEffect(() => {
         const deck_result = dispatch(_deck_result());
         console.log(deck_result);

@@ -9,6 +9,7 @@ import * as Font from 'expo-font';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import AppNavgator from './app/navigation/AppNavgator';
 
+import thunk from 'redux-thunk';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -18,7 +19,20 @@ const rootReducer = combineReducers({
   decks: decksReducer,
 });
 
-const store = createStore(rootReducer);
+//applyMiddleware => connect to store
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger,thunk)));
+
+//Middleware
+const logger = store => {
+  return next => {
+    return action => {
+      console.log('[Middleware] Dispatching', action);
+      const result = next(action);
+      console.log('[Middleware] next state', store.getState());
+      return result;
+    }
+  }
+}
 
 const fetchFonts = () => {
   return Font.loadAsync({

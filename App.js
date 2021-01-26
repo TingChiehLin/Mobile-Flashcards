@@ -9,9 +9,6 @@ import * as Font from 'expo-font';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import AppNavgator from './app/navigation/AppNavgator';
 
-// import PushNotificationIOS from "@react-native-community/push-notification-ios";
-// import PushNotification from "react-native-push-notification";
-
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 

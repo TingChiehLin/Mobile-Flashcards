@@ -2,12 +2,40 @@ import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import AppText from '../component/AppText/AppText';
-import * as Notifications from "expo-notifications";
-import * as Permissions from "expo-permissions";
 import colors from  '../config/color';
 import { useNavigation } from '@react-navigation/native';
 
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+
 export default function DeckDetails({ route }) {
+
+    useEffect(() => {
+        Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
+            if (statusObj.status !== 'granted') {
+                return Permissions.askAsync(Permissions.NOTIFICATIONS);
+            }
+            return statusObj;
+        }).then(statusObj => {
+            if (statusObj.status !== 'granted') {
+                return;
+            }
+        });
+    },[]);
+
+    const triggerNotificationHandler = () => {
+        Notifications.scheduleNotificationAsync({
+            content: {
+                title: "Good Morning!",
+                body: 'It is time to have a quiz',
+            },
+            trigger: {
+                seconds: 5
+            }
+        });
+
+    };
+
     const navigation = useNavigation();
     const { title, number} = route.params;
 
@@ -33,9 +61,14 @@ export default function DeckDetails({ route }) {
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.number}>{`${number} cards`}</Text>
             </View>
-            <AppButton
+            {/* <AppButton
                     title="Add Card"
                     onPress={ () => navigation.navigate('AddCard')}
+                    color="secondary"
+            /> */}
+             <AppButton
+                    title="Trigger Notification"
+                    onPress={triggerNotificationHandler}
                     color="secondary"
             />
             <AppButton

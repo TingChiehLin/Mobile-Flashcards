@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, SafeAreaView, Alert, Platform} from 'react-native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/component/AppText';
 import AppLoading from 'expo-app-loading';
@@ -10,14 +10,19 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import AppNavgator from './app/navigation/AppNavgator';
 
 import thunk from 'redux-thunk';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
 
 import decksReducer from './app/store/reducers/decks';
 
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const rootReducer = combineReducers({
   decks: decksReducer,
 });
+
+//configure Redux Dev Tool
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 //applyMiddleware => connect to store
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger,thunk)));

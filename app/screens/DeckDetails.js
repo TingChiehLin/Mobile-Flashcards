@@ -5,55 +5,10 @@ import AppText from '../component/AppText/AppText';
 import colors from  '../config/color';
 import { useNavigation } from '@react-navigation/native';
 
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
-
 export default function DeckDetails({ route }) {
-
-    useEffect(() => {
-        Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return Permissions.askAsync(Permissions.NOTIFICATIONS);
-            }
-            return statusObj;
-        }).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return;
-            }
-        });
-    },[]);
-
-    const triggerNotificationHandler = () => {
-        Notifications.scheduleNotificationAsync({
-            content: {
-                title: "Good Morning!",
-                body: 'It is time to have a quiz',
-            },
-            trigger: {
-                seconds: 5
-            }
-        });
-
-    };
 
     const navigation = useNavigation();
     const { title, number} = route.params;
-
-    // useEffect(() => {
-    //     registerForPushNotifications();
-    // }, []);
-
-    // const registerForPushNotifications = async () => {
-    //     try {
-    //         const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-    //         if (!permission.granted) return;
-    
-    //         const token = await Notifications.getExpoPushTokenAsync();
-    //         console.log(token);
-    //     } catch (error) {
-    //         console.log('Error getting a push token', error);
-    //     }
-    // }
 
     return (
         <View style={styles.container}>
@@ -61,14 +16,9 @@ export default function DeckDetails({ route }) {
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.number}>{`${number} cards`}</Text>
             </View>
-            {/* <AppButton
+            <AppButton
                     title="Add Card"
                     onPress={ () => navigation.navigate('AddCard')}
-                    color="secondary"
-            /> */}
-             <AppButton
-                    title="Trigger Notification"
-                    onPress={triggerNotificationHandler}
                     color="secondary"
             />
             <AppButton

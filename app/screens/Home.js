@@ -8,6 +8,9 @@ import DeckListView from './DeckListView';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
+
+    
+
     return  <Tab.Navigator
                 screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {

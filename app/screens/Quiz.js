@@ -2,9 +2,22 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const Quiz = () => {
+
+    const [quizState, setQuizState] = useState('s');
+    const [isQuiz, setIsQuiz] = useState(true);
+
+
+    const quizComponent = () => {
+        return (
+            <View>
+                <Text style={styles.text}>Test</Text>
+            </View>
+        )
+    }
+
     return (
         <View style={styles.container}>
-           <Text style={styles.text}>Quiz</Text>
+            {quizComponent()}
         </View>
     )
 }
@@ -14,10 +27,9 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor: 'red'
     },
     text: {
-        fontSize: 32
+        fontSize: 24
     }
 })
 

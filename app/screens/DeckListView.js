@@ -19,17 +19,22 @@ Notifications.setNotificationHandler({
 });
 
 const DeckListView = (props) => { 
-    // const [deckArray, setDeckArray] = useState([]);
+    //const [deckArray, setDeckArray] = useState([]);
     const navigation = useNavigation();
     const dispatch = useDispatch()
     const decks = useSelector(
         state => state.decks.availableDecks
     )
 
-    // const deckId = props.navigation.getParm('deckId');
+    //const deckId = props.navigation.getParm('deckId');
     //const selectedDeck = decks.find(deck => deck.id ===deckId);
-    // props.navigation.setParams({deckTitle: selectedDeck.title});
+    //props.navigation.setParams({deckTitle: selectedDeck.title});
     
+    const [timeValue, setTimeValue] = useState(86400);
+
+    useEffect(() => {
+
+    },[])
 
     useEffect(() => {
         const deck_result = dispatch(_deck_result());
@@ -65,25 +70,27 @@ const DeckListView = (props) => {
         };
     },[]);
 
-    const triggerNotificationHandler = () => {
+    const triggerNotificationHandler = (time) => {
         Notifications.scheduleNotificationAsync({
             content: {
                 title: "Good Morning!",
                 body: 'It is time to have a quiz',
             },
             trigger: {
-                seconds: 5
+                seconds: time
             }
         });
 
     };
 
+    triggerNotificationHandler(3)
+
     return <View style={styles.container}>
-        <AppButton
+        {/* <AppButton
                 title="Trigger Notification"
                 onPress={triggerNotificationHandler}
                 color="secondary"
-        />
+        /> */}
         <Deck title={"Udacity"} number={35} color={{backgroundColor:'blue'}} />
         <Deck color={{backgroundColor: 'red'}}/>
         <Deck />

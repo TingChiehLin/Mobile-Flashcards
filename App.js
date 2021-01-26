@@ -21,12 +21,6 @@ const rootReducer = combineReducers({
   decks: decksReducer,
 });
 
-//configure Redux Dev Tool
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-//applyMiddleware => connect to store
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger,thunk)));
-
 //Middleware
 const logger = store => {
   return next => {
@@ -38,6 +32,12 @@ const logger = store => {
     }
   }
 }
+
+//configure Redux Dev Tool
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+//applyMiddleware => connect to store
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger,thunk)));
 
 const fetchFonts = () => {
   return Font.loadAsync({

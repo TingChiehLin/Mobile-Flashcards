@@ -1,3 +1,3 @@
 export {
-    deck_result
+    _deck_result
 } from './decks';

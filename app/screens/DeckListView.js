@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import colors from '../config/color';
 import Deck from '../component/Deck/Deck';
@@ -33,7 +33,7 @@ const DeckListView = (props) => {
     const [timeValue, setTimeValue] = useState(86400);
 
     useEffect(() => {
-
+        
     },[])
 
     useEffect(() => {
@@ -83,7 +83,7 @@ const DeckListView = (props) => {
 
     };
 
-    triggerNotificationHandler(3)
+    triggerNotificationHandler(86400)
 
     return <View style={styles.container}>
         {/* <AppButton

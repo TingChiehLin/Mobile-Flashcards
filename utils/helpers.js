@@ -1,10 +1,6 @@
-// getDecks: return all of the decks along with their titles, questions, and answers.
-// getDeck: take in a single id argument and return the deck associated with that id.
-// saveDeckTitle: take in a single title argument and add it to the decks.
-// addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
-
 const DECK_STORAGE_KEY = '@flash_key';
 
+//Get all cards
 export async function _getDecks () {
   const data  = await AsyncStorage.getItem(DECK_STORAGE_KEY);
   
@@ -18,6 +14,9 @@ export async function _getDecks () {
     
   return JSON.parse(data);  
 }
+
+//title -> deck title
+// saveDeckTitle: take in a single title argument and add it to the decks.
 export async function _saveDeckTitle(title) {
   await AsyncStorage.mergeItem(
     DECK_STORAGE_KEY,
@@ -29,16 +28,19 @@ export async function _saveDeckTitle(title) {
     })
   );
 }
-// actions/decks.js
+
+// dispatch to get all of decks
 export const _getAllDecks = () => async(dispatch) => {
   const decks = await getDecks(); 
   dispatch(receiveDecksAction(decks));
 }
+
+// addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
 export const _addDeck = (title) => async(dispatch) => {
-  saveDeckTitle(title)
+  _saveDeckTitle(title)
   return dispatch(addDeckAction(title))
 }
-// utils/data.js
+
 export const decksList = {
     React: {
       title: 'React',
@@ -52,5 +54,14 @@ export const decksList = {
           answer: 'The componentDidMount lifecycle event'
         }
       ]
+    },
+    JavaScript: {
+      title: 'JavaScript',
+      questions: [
+        {
+          question: 'What is a closure?',
+          answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        }
+      ]
     }
-  };
+}

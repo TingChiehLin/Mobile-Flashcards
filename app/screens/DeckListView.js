@@ -33,12 +33,11 @@ const DeckListView = (props) => {
     const [timeValue, setTimeValue] = useState(86400);
 
     useEffect(() => {
-        
+
     },[])
 
     useEffect(() => {
-        const deck_result = dispatch(_deck_result());
-        console.log(deck_result);
+        dispatch(_deck_result());
     },[])
 
     useEffect(() => {
@@ -80,10 +79,18 @@ const DeckListView = (props) => {
                 seconds: time
             }
         });
-
     };
 
     triggerNotificationHandler(86400)
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
 
     return <View style={styles.container}>
         {/* <AppButton
@@ -91,9 +98,11 @@ const DeckListView = (props) => {
                 onPress={triggerNotificationHandler}
                 color="secondary"
         /> */}
-        <Deck title={"Udacity"} number={35} color={{backgroundColor:'blue'}} />
-        <Deck color={{backgroundColor: 'red'}}/>
-        <Deck />
+        {
+            Object.values(decks).map(deck => (
+                <Deck title={deck.title} number={deck.questions.length} color={getRandomColor()} />
+            ))
+        }
     </View>
 }
 

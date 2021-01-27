@@ -1,5 +1,6 @@
 const DECK_STORAGE_KEY = '@flash_key';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { decksList } from './Api';
 //Get all cards
 export async function _getDecks () {
   const data  = await AsyncStorage.getItem(DECK_STORAGE_KEY);
@@ -39,29 +40,4 @@ export const _getAllDecks = () => async(dispatch) => {
 export const _addDeck = (title) => async(dispatch) => {
   _saveDeckTitle(title)
   return dispatch(addDeckAction(title))
-}
-
-export const decksList = {
-    React: {
-      title: 'React',
-      questions: [
-        {
-          question: 'What is React?',
-          answer: 'A library for managing user interfaces'
-        },
-        {
-          question: 'Where do you make Ajax requests in React?',
-          answer: 'The componentDidMount lifecycle event'
-        }
-      ]
-    },
-    JavaScript: {
-      title: 'JavaScript',
-      questions: [
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        }
-      ]
-    }
 }

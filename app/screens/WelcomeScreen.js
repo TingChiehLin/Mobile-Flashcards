@@ -13,10 +13,10 @@ export default function WelcomeScreen({ navigation }) {
             style={styles.background}
             source={require("../assets/background.jpg")}
         >
-            <View style={styles.logoContainer}>
+            <Text style={styles.tagline}>Flash to see your answer !</Text>
+            {/* <View style={styles.logoContainer}>
                 <SvgUri style={styles.logo} source={require('../assets/logo.svg')} />
-                <Text style={styles.tagline}>Flash to see your answer !</Text>
-            </View>
+            </View> */}
             {/* <AntDesign name="right" size={24} color="black" /> */}
             {/* <AppText>Welcome to Flash Card Game !</AppText> */}
             <View style={styles.buttonsContainer}>
@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 24,
         fontWeight: "600",
+        marginVertical: 150,
     }
 })

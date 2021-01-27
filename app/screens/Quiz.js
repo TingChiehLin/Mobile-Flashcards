@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AppButton from '../component/AppButton/AppButton';
 
 const Quiz = () => {
 
@@ -9,8 +10,20 @@ const Quiz = () => {
 
     const quizComponent = () => {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text style={styles.text}>Test</Text>
+                <View style={styles.buttonContainer}>
+                    <AppButton
+                        title="O"
+                        onPress={ () => console.log("Correct")}
+                        color="primary"
+                    />
+                    <AppButton
+                        title="X"
+                        onPress={ () => console.log("wrong")}
+                        color="secondary"
+                    />
+                </View>
             </View>
         )
     }
@@ -28,8 +41,12 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
     },
+    buttonContainer: {
+        position: "absolute",
+        bottom: 50
+    },
     text: {
-        fontSize: 24
+        fontSize: 24,
     }
 })
 

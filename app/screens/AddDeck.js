@@ -4,8 +4,9 @@ import AppButton from '../component/AppButton/AppButton';
 import { TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const AddDeck = () => {
+const AddDeck = ({ route }) => {
     const navigation = useNavigation();
+    // const { title, number} = route.params;
     const [deckTitleName, setdeckTitleName] = useState('');
 
     return (
@@ -45,8 +46,9 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
         marginVertical: 50,
-        width: '80%',
-        minWidth: 300
+        width: '90%',
+        minWidth: 300,
+        height:30
     },
     addDeckContainer: {
         flex:1,

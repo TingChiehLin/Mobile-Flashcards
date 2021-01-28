@@ -25,11 +25,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 32,
         color: colors.black,
-        marginVertical:10
+        marginVertical:10,
+        fontWeight: 'bold'
     },
     number: {
         fontSize: 24,
-        fontWeight: '100',
+        fontWeight: '200',
         color: colors.black
     },
     deck: {

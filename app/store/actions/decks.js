@@ -18,6 +18,15 @@ export const addCardToDeckResult = async () => {
     };
 }
 
+export const _delete_Deck = (deckId) => {
+    return {
+        type: DELETE_DECK,
+        deckId
+    };
+}
+
+
+
 export const _deck_result = (res) => {
     return async dispatch => {
         dispatch(await showResult(res))

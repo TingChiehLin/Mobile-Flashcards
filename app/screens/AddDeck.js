@@ -44,8 +44,7 @@ const AddDeck = ({ route }) => {
                     title="Submit"
                     onPress={ () => {
                         saveDeckTitle()
-                        navigation.navigate('Home')
-                        console.log("Home")
+                        navigation.navigate('DeckListView')
                     }}
                     color="primary"
                 />

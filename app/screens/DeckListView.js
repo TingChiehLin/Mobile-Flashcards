@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView  } from 'react-native';
 import colors from '../config/color';
 import Deck from '../component/Deck/Deck';
 import AppButton from '../component/AppButton/AppButton';
@@ -92,18 +92,13 @@ const DeckListView = (props) => {
         return color;
       }
 
-    return <View style={styles.container}>
-        {/* <AppButton
-                title="Trigger Notification"
-                onPress={triggerNotificationHandler}
-                color="secondary"
-        /> */}
-        {
-            Object.values(decks).map((deck,index) => (
-                <Deck key={index} title={deck.title} number={deck.questions.length} color={getRandomColor()} />
-            ))
-        }
-    </View>
+    return <ScrollView style={styles.container}>
+                {
+                    Object.values(decks).map((deck,index) => (
+                        <Deck key={index} title={deck.title} number={deck.questions.length} color={getRandomColor()} />
+                    ))
+                }
+    </ScrollView>
 }
 
 const styles = StyleSheet.create({

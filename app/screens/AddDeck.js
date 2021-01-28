@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { _save_deck } from '../store/actions/decks';
+import { useSelector, useDispatch } from 'react-redux';
 
 const AddDeck = ({ route }) => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     // const { title, number} = route.params;
     const [deckTitleName, setdeckTitleName] = useState('');
+    
+    const titleChangeHandler = value => {
+        setdeckTitleName(value);
+    }
+
+    const saveDeckTitle = () => {
+        dispatch(_save_deck(deckTitleName));
+    }
+
+    // useEffect(() => {
+    
+    // },[])
 
     return (
         <View style={styles.addDeckContainer}>
@@ -16,18 +31,19 @@ const AddDeck = ({ route }) => {
                 clearButtonMode="always"
                 keyboardType="default"
                 maxLength={30}
-                onChangeText={text => setdeckTitleName(text)}
+                onChangeText={titleChangeHandler}
                 placeholder="Deck Title"
                 style={styles.input}
             />
             <View style={styles.button}>
                 <AppButton
-                        title="Submit"
-                        onPress={ () => {
-                            navigation.navigate('Home')
-                            console.log("Home")
-                        }}
-                        color="primary"
+                    title="Submit"
+                    onPress={ () => {
+                        saveDeckTitle()
+                        navigation.navigate('Home')
+                        console.log("Home")
+                    }}
+                    color="primary"
                 />
             </View>
         </View>

@@ -18,6 +18,11 @@ const decksReducer = (state = initialState, action) => {
                 state, {
 
             })
+        case actionType.SAVE_DECK:
+            return updateObject(
+                state, {
+                    availableDecks: action.availableDecks
+            })
         case actionType.DELETE_DECK:
             return updateObject(
                 state, {

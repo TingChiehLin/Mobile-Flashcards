@@ -38,7 +38,7 @@ export const _getAllDecks = () => async(dispatch) => {
 }
 
 // addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
-export const _addDeck = (title) => async(dispatch) => {
+export const _addDeck = (title, card) => async(dispatch) => {
   _saveDeckTitle(title)
   return dispatch(addDeckAction(title))
 }

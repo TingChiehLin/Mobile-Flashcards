@@ -60,9 +60,9 @@ export default function App() {
   return (
     <Provider store={store}>
         <NavigationContainer>
-          <SafeAreaView>
+          {/* <SafeAreaView> */}
             <AppNavgator/>
-          </SafeAreaView>
+          {/* </SafeAreaView> */}
         </NavigationContainer>
     </Provider>
   );

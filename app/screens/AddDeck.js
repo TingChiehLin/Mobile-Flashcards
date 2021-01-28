@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -17,6 +17,10 @@ const AddDeck = ({ route }) => {
     }
 
     const saveDeckTitle = () => {
+        if(deckTitleName === '') {
+            Alert.alert('Invalid Title Name','Please Type any Title Name', [{text: 'Okay', style: 'destructive'}])
+            return
+        }
         dispatch(_save_deck(deckTitleName));
     }
 

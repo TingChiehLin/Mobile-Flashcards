@@ -94,11 +94,11 @@ const DeckListView = (props) => {
 
     return <ScrollView style={styles.container}>
                 {
-                    Object.values(decks).map((deck,index) => (
+                    Object.values(decks).sort().map((deck,index) => (
                         <Deck key={index} title={deck.title} number={deck.questions.length} color={getRandomColor()} />
                     ))
                 }
-    </ScrollView>
+            </ScrollView>
 }
 
 const styles = StyleSheet.create({

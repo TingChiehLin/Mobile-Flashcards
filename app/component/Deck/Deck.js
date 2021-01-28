@@ -13,7 +13,7 @@ const Deck = ({title, number, color}) => {
                 number
             })}
         >
-            <View style={[styles.deck, color]}>
+            <View style={[styles.deck, {backgroundColor:color}]}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.number}>{number}</Text>
             </View>
@@ -24,13 +24,13 @@ const Deck = ({title, number, color}) => {
 const styles = StyleSheet.create({
     title: {
         fontSize: 32,
-        color: colors.white,
+        color: colors.black,
         marginVertical:10
     },
     number: {
         fontSize: 24,
         fontWeight: '100',
-        color: colors.white
+        color: colors.black
     },
     deck: {
         justifyContent: 'center',

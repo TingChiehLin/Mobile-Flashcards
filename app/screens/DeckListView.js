@@ -99,8 +99,8 @@ const DeckListView = (props) => {
                 color="secondary"
         /> */}
         {
-            Object.values(decks).map(deck => (
-                <Deck title={deck.title} number={deck.questions.length} color={getRandomColor()} />
+            Object.values(decks).map((deck,index) => (
+                <Deck key={index} title={deck.title} number={deck.questions.length} color={getRandomColor()} />
             ))
         }
     </View>

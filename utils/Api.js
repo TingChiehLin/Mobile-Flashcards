@@ -3,12 +3,18 @@ export const decksList = {
     title: 'React',
     questions: [
       {
-        question: 'What is React?',
-        answer: 'A library for managing user interfaces'
+        question: 'Can you use Typescript with React',
+        answer: [
+          { value: 'Yes', correct: true },
+          { value: 'No', correct: false },
+        ]
       },
       {
-        question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
+        question: 'Is React.js better than Vue.js?',
+        answer: [
+          { value: 'Yes', correct: true },
+          { value: 'No', correct: false },
+        ]
       }
     ]
   },
@@ -16,8 +22,11 @@ export const decksList = {
     title: 'JavaScript',
     questions: [
       {
-        question: 'What is a closure?',
-        answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        question: 'Is closure the combination of a function and the lexical environment within which that function was declared.',
+        answer: [
+          { value: 'Yes', correct: true },
+          { value: 'No', correct: false },
+        ]
       }
     ]
   }

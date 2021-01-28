@@ -24,8 +24,9 @@ const AddDeck = ({ route }) => {
                 <AppButton
                         title="Submit"
                         onPress={ () => {
-                            navigation.navigate('Home')}
-                        }
+                            navigation.navigate('Home')
+                            console.log("Home")
+                        }}
                         color="primary"
                 />
             </View>

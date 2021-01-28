@@ -1,6 +1,7 @@
 const DECK_STORAGE_KEY = '@flash_key';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { decksList } from './Api';
+
 //Get all cards
 export async function _getDecks () {
   const data  = await AsyncStorage.getItem(DECK_STORAGE_KEY);
@@ -32,7 +33,7 @@ export async function _saveDeckTitle(title) {
 
 // dispatch to get all of decks
 export const _getAllDecks = () => async(dispatch) => {
-  const decks = await getDecks(); 
+  const decks = await _getDecks(); 
   dispatch(receiveDecksAction(decks));
 }
 

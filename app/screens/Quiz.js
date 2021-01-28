@@ -5,8 +5,33 @@ import AppButton from '../component/AppButton/AppButton';
 const Quiz = () => {
 
     const [quizState, setQuizState] = useState('s');
-    const [isQuiz, setIsQuiz] = useState(true);
+    const [isQuiz, setIsQuiz] = useState(false);
+    const [resultText, setresultText] = useState('0');
 
+    const onQuizResult = () => (
+        setresultText("1")
+    )
+
+    const quizResult = () => {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.text}>Quiz Result</Text>
+                <Text style={styles.resultText}>{`${resultText} %`}</Text>
+                <View style={styles.buttonContainer}>
+                    <AppButton
+                        title="Restart Quiz"
+                        onPress={ () => console.log("Restart Quiz")}
+                        color="primary"
+                    />
+                    <AppButton
+                        title="Back to Deck"
+                        onPress={ () => console.log("Back to Deck")}
+                        color="secondary"
+                    />
+                </View>
+            </View>
+        )
+    }
 
     const quizComponent = () => {
         return (
@@ -30,7 +55,7 @@ const Quiz = () => {
 
     return (
         <View style={styles.container}>
-            {quizComponent()}
+            {isQuiz ? quizResult() : quizComponent()}
         </View>
     )
 }
@@ -46,7 +71,13 @@ const styles = StyleSheet.create({
         bottom: 50
     },
     text: {
-        fontSize: 24,
+        fontSize: 32,
+        position: "absolute",
+        top: 80
+    },
+    resultText: {
+        fontSize: 32,
+        color: 'tomato'
     }
 })
 

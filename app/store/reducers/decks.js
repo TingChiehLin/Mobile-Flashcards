@@ -2,8 +2,7 @@ import * as actionType from '../actions/actionsType';
 import { updateObject } from '../../../utils/utility';
 
 const initialState = {
-    availableDecks:[],
-    question:[]
+    availableDecks:[]
 };
 
 const decksReducer = (state = initialState, action) => {

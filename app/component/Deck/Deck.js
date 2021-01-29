@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const Deck = ({title, number, color}) => {
     const navigation = useNavigation();
-    
+
     return (
         <TouchableWithoutFeedback 
             onPress={() => navigation.navigate('DeckDetails', {

@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Alert} from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
+import { useSelector, useDispatch } from 'react-redux';
 
-const AddCard = () => {
+const AddCard = ({ route }) => {
+    const { title, questions } = route.params;
     const [questionName, setQuestionName] = useState('');
     const [answerName, setAnswerName] = useState('');
+
+    const cardQuestionTitle = title;
+    const cardQuestionQuestions = questions;
+    console.log('------cardQuestionTitle--------',cardQuestionTitle);
+    console.log('------cardQuestionQuestions--------',cardQuestionQuestions);
+
+    const dispatch = useDispatch();
+
+    const saveCard = () => {
+
+    }
+
+    // if(!questionName || !answerName) {
+    //     Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
+    //     return
+    // }
 
     return (
         <View style={styles.container}>

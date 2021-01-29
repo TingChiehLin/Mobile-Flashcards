@@ -5,6 +5,7 @@ import { TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { _save_deck } from '../store/actions/decks';
 import { useSelector, useDispatch } from 'react-redux';
+import { _add_cardToDeck } from '../store/actions';
 
 const AddDeck = ({ route }) => {
     const navigation = useNavigation();
@@ -21,12 +22,10 @@ const AddDeck = ({ route }) => {
             Alert.alert('Invalid Title Name','Please Type any Title Name', [{text: 'Okay', style: 'destructive'}])
             return
         }
+        // navigation.navigate('DeckListView')
+        navigation.goBack()
         dispatch(_save_deck(deckTitleName));
     }
-
-    // useEffect(() => {
-    
-    // },[])
 
     return (
         <View style={styles.addDeckContainer}>
@@ -44,7 +43,6 @@ const AddDeck = ({ route }) => {
                     title="Submit"
                     onPress={ () => {
                         saveDeckTitle()
-                        navigation.navigate('DeckListView')
                     }}
                     color="primary"
                 />

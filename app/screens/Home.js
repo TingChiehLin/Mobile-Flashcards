@@ -38,8 +38,8 @@ const TabNavigator = () => {
                 },
                 })}
                 tabBarOptions={{
-                activeTintColor: 'tomato',
-                inactiveTintColor: 'gray',
+                    activeTintColor: 'tomato',
+                    inactiveTintColor: 'gray',
                 }}
             >
                 <Tab.Screen name="DeckListView" component={DeckListView} />

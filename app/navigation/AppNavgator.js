@@ -1,70 +1,81 @@
 import React from 'react'
 import { createStackNavigator, createAppContainer } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 import WelcomeScreen from '../screens/WelcomeScreen';
-import Home from '../screens/Home';
 import DeckDetails from '../screens/DeckDetails';
 import Quiz from '../screens/Quiz';
 import AddCard from '../screens/AddCard';
+import DeckListView from "../screens/DeckListView"
+import AddDeck from "../screens/AddDeck"
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => {
+    return  <Tab.Navigator
+                screenOptions={({ route }) => ({
 
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+                tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
+                    
+                    if (route.name === 'Home' ) {
+                        tabBarVisible = false
+                    }
 
-function getHeaderTitle(route) {
-  // If the focused route is not found, we need to assume it's the initial screen
-  // This can happen during if there hasn't been any navigation inside the screen
-  // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
-
-  switch (routeName) {
-    case 'Home':
-      return 'Home';
-    case 'DeckDetails':
-      return 'Deck Details';
-    case 'AddCard':
-      return 'Add Card';
-    case 'AddCard':
-      return 'Add Card';
-  }
+                    if (route.name === 'DeckListView') {
+                    if(Platform.OS === 'ios') {
+                        iconName = focused
+                        ? 'ios-file-tray-stacked'
+                        : 'ios-file-tray-stacked-outline';
+                    } else {
+                        iconName = focused
+                        ? 'file-tray-stacked'
+                        : 'file-tray-stacked-outline';
+                    }
+                    } else if (route.name === 'Add Deck') {
+                    if(Platform.OS === 'ios') {
+                        iconName = focused
+                        ? 'ios-add'
+                        : 'ios-add-outline';
+                    } else {
+                        iconName = focused
+                        ? 'add'
+                        : 'add-outline';
+                    }
+                    }
+                    return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                })}
+                tabBarOptions={{
+                activeTintColor: 'tomato',
+                inactiveTintColor: 'gray',
+                }}
+            >
+                <Tab.Screen name="DeckListView" component={stackNavigator} />
+                <Tab.Screen name="Add Deck" component={addDeckNav} />
+        </Tab.Navigator>
 }
 
-const AppNavgator = () => (
+const Stack = createStackNavigator();
+const stackNavigator = () => (
     <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{headerShown: false}}/>
-        <Stack.Screen name="Home" component={Home} option={({ route }) => ({
-            headerTitle: getHeaderTitle(route)
-        })}/>
-        <Stack.Screen name="DeckDetails" component={DeckDetails} option={({ route }) => ({
-            headerTitle: getHeaderTitle(route)
-        })}/>
-        <Stack.Screen name="AddCard" component={AddCard}
-            option={({ route }) => ({
-                headerTitle: getHeaderTitle(route)
-        })}/>
-        <Stack.Screen name="Quiz" component={Quiz} option={({ route }) => ({
-            headerTitle: getHeaderTitle(route)
-        })}/>
+        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
+          headerShown: false,
+          tabBarVisible: false,
+        }}/>
+        <Stack.Screen name="Home" component={DeckListView} />
+        <Stack.Screen name="DeckDetails" component={DeckDetails} />
+        <Stack.Screen name="AddCard" component={AddCard}/>
+        <Stack.Screen name="Quiz" component={Quiz}/>
     </Stack.Navigator>
 )
 
+const AddDeckStack = createStackNavigator();
+const addDeckNav = () => (
+  <AddDeckStack.Navigator>
+     <AddDeckStack.Screen name="Add Deck"  component={AddDeck}/>
+  </AddDeckStack.Navigator>
+)
+const AppNavgator = () => (
+    <TabNavigator />
+)
 export default AppNavgator;
-
-// const StackNavigator = () => (
-//     <Stack.Navigator 
-//       initialRouteName="Welcome"
-//       screenOptions={{
-//         headerStyle: { backgroundColor: colors.primary },
-//         headerTintColor: "white",
-//       }}
-//     >
-//       <Stack.Screen name="Welcome" component={WelcomeScreen} />
-//       <Stack.Screen 
-//         name="Home" 
-//         component={Home}
-//         options={{ headerShown: false }}
-//       />
-//       <Stack.Screen name="AddDeck" component={AddDeck} ptions={{ title: 'Add Deck' }}/>
-//       <Stack.Screen name="DeckDetails" component={DeckDetails} options={{ title: 'Deck Details'}}/>
-//     </Stack.Navigator>
-//   )
-  

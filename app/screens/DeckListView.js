@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView  } from 'react-native';
-import colors from '../config/color';
+import { StyleSheet, ScrollView } from 'react-native';
 import Deck from '../component/Deck/Deck';
-import AppButton from '../component/AppButton/AppButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { _deck_result } from '../store/actions';
 import { useNavigation } from '@react-navigation/native';
-
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
-
-Notifications.setNotificationHandler({
-    handleNotification: async () => {
-        return {
-            shouldShowAlert: true
-        };
-    }
-});
 
 const DeckListView = (props) => { 
     //const [deckArray, setDeckArray] = useState([]);
@@ -26,62 +13,9 @@ const DeckListView = (props) => {
         state => state.decks.availableDecks
     )
 
-    //const deckId = props.navigation.getParm('deckId');
-    //const selectedDeck = decks.find(deck => deck.id ===deckId);
-    //props.navigation.setParams({deckTitle: selectedDeck.title});
-    
-    const [timeValue, setTimeValue] = useState(86400);
-
-    useEffect(() => {
-
-    },[])
-
     useEffect(() => {
         dispatch(_deck_result());
     },[])
-
-    useEffect(() => {
-        Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return Permissions.askAsync(Permissions.NOTIFICATIONS);
-            }
-            return statusObj;
-        }).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return;
-            }
-        });
-    },[]);
-
-    useEffect(() => {
-
-        const backgroundSubscription = Notifications.addNotificationReceivedListener(response => {
-            console.log(response)
-        });
-
-        const foregroundSubscription =  Notifications.addNotificationReceivedListener(notification => {
-            console.log(notification);
-        });
-
-        return () => {
-            foregroundSubscription.remove();
-            backgroundSubscription.remove();
-        };
-    },[]);
-
-    const triggerNotificationHandler = (time) => {
-        Notifications.scheduleNotificationAsync({
-            content: {
-                title: "Good Morning!",
-                body: 'It is time to have a quiz',
-            },
-            trigger: {
-                seconds: time
-            }
-        });
-    };
-
-    triggerNotificationHandler(86400)
 
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
@@ -95,7 +29,12 @@ const DeckListView = (props) => {
     return <ScrollView style={styles.container}>
                 {
                     Object.values(decks).sort().map((deck,index) => (
-                        <Deck key={index} title={deck.title} number={deck.questions.length} color={getRandomColor()} />
+                        <Deck 
+                            key={index} 
+                            title={deck.title} 
+                            number={deck.questions.length} 
+                            color={getRandomColor()} 
+                        />
                     ))
                 }
             </ScrollView>

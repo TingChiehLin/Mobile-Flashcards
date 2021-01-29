@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 
-const Quiz = () => {
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 
+Notifications.setNotificationHandler({
+    handleNotification: async () => {
+        return {
+            shouldShowAlert: true
+        };
+    }
+});
+
+const Quiz = () => {
     const [quizState, setQuizState] = useState('s');
     const [isQuiz, setIsQuiz] = useState(false);
     const [resultText, setresultText] = useState('0');
@@ -11,6 +21,51 @@ const Quiz = () => {
     const onQuizResult = () => (
         setresultText("1")
     )
+
+    useEffect(() => {
+        Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
+            if (statusObj.status !== 'granted') {
+                return Permissions.askAsync(Permissions.NOTIFICATIONS);
+            }
+            return statusObj;
+        }).then(statusObj => {
+            if (statusObj.status !== 'granted') {
+                return;
+            }
+        });
+    },[]);
+
+    useEffect(() => {
+
+        const backgroundSubscription = Notifications.addNotificationReceivedListener(response => {
+            console.log(response)
+        });
+
+        const foregroundSubscription =  Notifications.addNotificationReceivedListener(notification => {
+            console.log(notification);
+        });
+
+        return () => {
+            foregroundSubscription.remove();
+            backgroundSubscription.remove();
+        };
+    },[]);
+
+    const triggerNotificationHandler = (time) => {
+        Notifications.scheduleNotificationAsync({
+            content: {
+                title: "Good Morning!",
+                body: 'It is time to have a quiz',
+            },
+            trigger: {
+                seconds: time
+            }
+        });
+    };
+
+    if(!isQuiz) {
+        triggerNotificationHandler(300)
+    } 
 
     const quizResult = () => {
         return (
@@ -25,7 +80,7 @@ const Quiz = () => {
                     />
                     <AppButton
                         title="Back to Deck"
-                        onPress={ () => console.log("Back to Deck")}
+                        onPress={ () => setIsQuiz(true)}
                         color="secondary"
                     />
                 </View>

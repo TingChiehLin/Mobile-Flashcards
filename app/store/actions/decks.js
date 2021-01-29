@@ -1,5 +1,5 @@
 import * as actionType from './actionsType';
-import { _getDecks, _addDeck, _saveDeckTitle } from '../../../utils/helpers';
+import { _getDecks, _addDeck , _saveDeckTitle } from '../../../utils/helpers';
 
 //Action Creator
 export const showResult = async () => {
@@ -10,21 +10,18 @@ export const showResult = async () => {
     };
 }
 
-export const addCardToDeckResult = async () => {
-    const updateResult = await _addDeck();
+export const addCardToDeckResult = async (deckId, card) => {
+    const updateResult = await _addDeck(deckId, card);
     return {
         type: actionType.ADD_CardToDECK,
-        
+        deckId,
+        card
     };
 }
 
-export const _delete_Deck = (deckId) => {
-    return {
-        type: DELETE_DECK,
-        deckId
-    };
-}
+export const deleteCardFromResult = async () => {
 
+}
 
 
 export const _deck_result = (res) => {
@@ -40,10 +37,18 @@ export const _save_deck = (title) => {
     }
 }
 
-export const _add_cardtodeck = (res) => {
+export const _add_cardToDeck = (deckId, card) => {
     return async dispatch => {
-        dispatch(await addCardToDeckResult)
+        dispatch(await addCardToDeckResult(deckId, card))
     }
 }
 
+export const _delete_Deck = (deckId) => {
+    return async dispatch => {
+        dispatch(await deleteCardFromResult)
+    };
+}
+
+// type: DELETE_DECK,
+// deckId
 

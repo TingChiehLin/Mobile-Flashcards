@@ -60,7 +60,7 @@ export default function App() {
   return (
     <Provider store={store}>
         <NavigationContainer>
-          {/* <SafeAreaView> */}
+          {/* <SafeAreaView style={{ flex: 1 }}> */}
             <AppNavgator/>
           {/* </SafeAreaView> */}
         </NavigationContainer>
@@ -76,33 +76,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-
-{/* <SafeAreaView style={styles.container}>
-<StatusBar style="auto" />
-<Text>{outputText}</Text>
-<View style={{ padding: 30 }}>
-</View>
-</SafeAreaView> */}
-
-{/* <TextInput placeholder="Course Goal"/> */}
-        {/* <Button color="orange" title="ADD" onPress={() =>{}}/>
-        <Button color="orange" title="ADD" onPress={() => Alert.alert(
-          "My title", "My message",
-           [{text: "Yes", onPress: () => console.log("Yes")},
-            {text: "No", onPress: () => console.log("No")}]
-          )}/> */}
-{/* <Button
-  title="Click Me"
-  onPress={()=>
-    Alert.prompt("My title", "My message", text => console.log(text))
-  }
->
-</Button> 
-*/}
-{/* <Button title="Change Text" onPress={() => setOutputText('Text changed!')}/> */}
-
-// Platform.OS === "android" ? StatusBar.currentHeight : 0,
-
-//Dimensions.get("screen");
-

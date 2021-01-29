@@ -4,12 +4,21 @@ import AppButton from '../component/AppButton/AppButton';
 import AppText from '../component/AppText/AppText';
 import colors from  '../config/color';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { _add_cardtodeck, _delete_Deck } from '../store/actions';
 
 export default function DeckDetails({ route }) {
 
     const navigation = useNavigation();
-    const { title, number} = route.params;
+    const dispatch = useDispatch();
 
+    const { title, number} = route.params;
+    const decks = useSelector(
+        state => state.decks.availableDecks
+    )
+    const deckID = decks[title];
+    console.log('------deckID-----',deckID);
+    
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
@@ -18,16 +27,23 @@ export default function DeckDetails({ route }) {
             </View>
             <AppButton
                     title="Add Card"
-                    onPress={ () => navigation.navigate('AddCard')}
+                    onPress={ () => navigation.navigate('AddCard',{
+                        title: deckID.title,
+                        questions: deckID.questions
+                    })}
                     color="secondary"
             />
             <AppButton
                     title="Start Quiz"
-                    onPress={ () => navigation.navigate('Quiz')}
+                    onPress={ () => navigation.navigate('Quiz',{
+                        deckID
+                    })}
                     color="primary"
             />
             <Text style={styles.text}
-                onPress={() => console.log("Delete")}
+                onPress={() => console.log("Delete")
+                    
+            }
             >
                 Delete Deck
             </Text>

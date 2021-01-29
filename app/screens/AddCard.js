@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text, Alert} from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { useSelector, useDispatch } from 'react-redux';
+import { _add_cardToDeck } from '../store/actions';
 
 const AddCard = ({ route }) => {
     const { title, questions } = route.params;
@@ -13,16 +14,22 @@ const AddCard = ({ route }) => {
     console.log('------cardQuestionTitle--------',cardQuestionTitle);
     console.log('------cardQuestionQuestions--------',cardQuestionQuestions);
 
+    const decks = useSelector(
+        state => state.decks.availableDecks
+    )
+
     const dispatch = useDispatch();
 
     const saveCard = () => {
-
+        if(!questionName || !answerName) {
+            Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
+            return
+        }
+        dispatch(_add_cardToDeck({
+            title: questionName,
+            answer: answerName
+        }));
     }
-
-    // if(!questionName || !answerName) {
-    //     Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
-    //     return
-    // }
 
     return (
         <View style={styles.container}>
@@ -47,9 +54,8 @@ const AddCard = ({ route }) => {
             <View style={styles.buttonsContainer}>
                 <AppButton
                         title="Submit"
-                        onPress={ () => console.log("Submit")}
+                        onPress={ () => saveCard()}
                         color="primary"
-
                 />
             </View>
         </View>

@@ -3,9 +3,8 @@ import { View, StyleSheet, Text, Alert } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { _save_deck } from '../store/actions/decks';
-import { useSelector, useDispatch } from 'react-redux';
-import { _add_cardToDeck } from '../store/actions';
+import { _save_deck } from '../store/actions';
+import { useDispatch } from 'react-redux';
 
 const AddDeck = ({ route }) => {
     const navigation = useNavigation();

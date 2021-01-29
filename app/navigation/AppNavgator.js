@@ -16,11 +16,7 @@ const TabNavigator = () => {
 
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    
-                    if (route.name === 'Home' ) {
-                        tabBarVisible = false
-                    }
-
+                  
                     if (route.name === 'DeckListView') {
                     if(Platform.OS === 'ios') {
                         iconName = focused
@@ -50,7 +46,11 @@ const TabNavigator = () => {
                 inactiveTintColor: 'gray',
                 }}
             >
-                <Tab.Screen name="DeckListView" component={stackNavigator} />
+                <Tab.Screen 
+                  name="DeckListView" 
+                  component={stackNavigator}
+                  // options={{ tabBarVisible: false }}
+                />
                 <Tab.Screen name="Add Deck" component={addDeckNav} />
         </Tab.Navigator>
 }
@@ -60,7 +60,6 @@ const stackNavigator = () => (
     <Stack.Navigator>
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
           headerShown: false,
-          tabBarVisible: false,
         }}/>
         <Stack.Screen name="Home" component={DeckListView} />
         <Stack.Screen name="DeckDetails" component={DeckDetails} />
@@ -75,6 +74,7 @@ const addDeckNav = () => (
      <AddDeckStack.Screen name="Add Deck"  component={AddDeck}/>
   </AddDeckStack.Navigator>
 )
+
 const AppNavgator = () => (
     <TabNavigator />
 )

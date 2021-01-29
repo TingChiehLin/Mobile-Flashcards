@@ -10,12 +10,12 @@ export const showResult = async () => {
     };
 }
 
-export const addCardToDeckResult = async (deckId, card) => {
-    const updateResult = await _addDeck(deckId, card);
+//Add Card
+export const addCardToDeckResult = async (cards) => {
+    const updateResult = await _addDeck(cards);
     return {
-        type: actionType.ADD_CardToDECK,
-        deckId,
-        card
+        type: actionType.ADD_CARD,
+        cards
     };
 }
 
@@ -23,13 +23,14 @@ export const deleteCardFromResult = async () => {
 
 }
 
-
-export const _deck_result = (res) => {
+// Deck Result
+export const _deck_result = (decks) => {
     return async dispatch => {
-        dispatch(await showResult(res))
+        dispatch(await showResult(decks))
     }
 }
 
+//Add Deck
 export const _save_deck = (title) => {
     return async dispatch => {
         const newdeck = await _saveDeckTitle(title)
@@ -37,18 +38,16 @@ export const _save_deck = (title) => {
     }
 }
 
-export const _add_cardToDeck = (deckId, card) => {
+//Add Card
+export const _add_cardToDeck = ({deckId, card}) => {
     return async dispatch => {
-        dispatch(await addCardToDeckResult(deckId, card))
+        dispatch(await addCardToDeckResult({deckId, card}))
     }
 }
 
+// Delete Deck
 export const _delete_Deck = (deckId) => {
     return async dispatch => {
         dispatch(await deleteCardFromResult)
     };
 }
-
-// type: DELETE_DECK,
-// deckId
-

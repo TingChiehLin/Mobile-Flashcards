@@ -36,12 +36,14 @@ export default function DeckDetails({ route }) {
             <AppButton
                     title="Start Quiz"
                     onPress={ () => navigation.navigate('Quiz',{
-                        deckID
+                        title: deckID.title,
+                        questions: deckID.questions
                     })}
                     color="primary"
             />
             <Text style={styles.text}
-                onPress={() => console.log("Delete")
+                onPress={() =>
+                  console.log("Delete")
                     
             }
             >

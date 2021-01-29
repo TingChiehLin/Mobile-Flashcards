@@ -4,6 +4,8 @@ import AppButton from '../component/AppButton/AppButton';
 
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 Notifications.setNotificationHandler({
     handleNotification: async () => {
@@ -13,11 +15,40 @@ Notifications.setNotificationHandler({
     }
 });
 
-const Quiz = () => {
+const Quiz = ({ route }) => {
+    const { title, questions } = route.params;
     const [quizState, setQuizState] = useState('s');
     const [isQuiz, setIsQuiz] = useState(false);
     const [resultText, setresultText] = useState('0');
 
+    console.log('---questions---',questions.length);
+    const [state, setState] = useState({
+        currentQuestion: 0,
+        totalCorrect: 0,
+        totalIncorrect: 0,
+    })
+
+    const handleAnswer = (answer) => {
+
+        setState({
+          currentQuestions: state.currentQuestions + 1,
+        });
+
+        if (answer.correct) {
+          return setState({
+            totalCorrect: state.totalCorrect + 1,
+          });
+        }
+
+        setState({
+            totalIncorrect: state.totalIncorrect + 1,
+        });
+    };
+
+    // finish = () => {
+    //     dispatch(finishQuiz(state));
+    // }
+    
     const onQuizResult = () => (
         setresultText("1")
     )
@@ -63,7 +94,7 @@ const Quiz = () => {
         });
     };
 
-    if(!isQuiz) {
+    if(isQuiz) {
         triggerNotificationHandler(300)
     } 
 
@@ -91,7 +122,8 @@ const Quiz = () => {
     const quizComponent = () => {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Test</Text>
+                <Text style={styles.text}>{questions[state.currentQuestion].question}
+                </Text>
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="O"
@@ -126,9 +158,11 @@ const styles = StyleSheet.create({
         bottom: 50
     },
     text: {
-        fontSize: 32,
+        fontSize: 24,
         position: "absolute",
-        top: 80
+        top: 80,
+        padding:36,
+        lineHeight:32
     },
     resultText: {
         fontSize: 32,

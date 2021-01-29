@@ -3,7 +3,7 @@ export const decksList = {
     title: 'React',
     questions: [
       {
-        question: 'Can you use Typescript with React',
+        question: 'Can you use Typescript with React?',
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },
@@ -22,7 +22,7 @@ export const decksList = {
     title: 'JavaScript',
     questions: [
       {
-        question: 'Is closure the combination of a function and the lexical environment within which that function was declared.',
+        question: 'Is closure the combination of a function and the lexical environment within which that function was declared?',
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },

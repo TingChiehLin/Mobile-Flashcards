@@ -51,3 +51,11 @@ export const _delete_Deck = (deckId) => {
         dispatch(await deleteCardFromResult)
     };
 }
+
+//finishQuiz
+
+export const finishQuiz = () => {
+    return async dispatch => {
+        
+    };
+}

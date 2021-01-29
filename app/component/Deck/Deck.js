@@ -24,14 +24,14 @@ const Deck = ({title, number, color}) => {
 const styles = StyleSheet.create({
     title: {
         fontSize: 32,
-        color: colors.black,
+        color: colors.white,
         marginVertical:10,
         fontWeight: 'bold'
     },
     number: {
         fontSize: 24,
         fontWeight: '200',
-        color: colors.black
+        color: colors.white
     },
     deck: {
         justifyContent: 'center',

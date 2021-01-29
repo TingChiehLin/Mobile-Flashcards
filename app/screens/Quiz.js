@@ -20,8 +20,9 @@ const Quiz = ({ route }) => {
     const [quizState, setQuizState] = useState('s');
     const [isQuiz, setIsQuiz] = useState(false);
     const [resultText, setresultText] = useState('0');
-
+   
     console.log('---questions---',questions.length);
+
     const [state, setState] = useState({
         currentQuestion: 0,
         totalCorrect: 0,
@@ -29,12 +30,11 @@ const Quiz = ({ route }) => {
     })
 
     const handleAnswer = (answer) => {
-
         setState({
           currentQuestions: state.currentQuestions + 1,
         });
 
-        if (answer.correct) {
+        if (questions[state.currentQuestion].answer[state.currentQuestion].correct) {
           return setState({
             totalCorrect: state.totalCorrect + 1,
           });
@@ -49,9 +49,6 @@ const Quiz = ({ route }) => {
     //     dispatch(finishQuiz(state));
     // }
     
-    const onQuizResult = () => (
-        setresultText("1")
-    )
 
     useEffect(() => {
         Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
@@ -127,12 +124,14 @@ const Quiz = ({ route }) => {
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="O"
-                        onPress={ () => console.log("Correct")}
+                        onPress={ () => 
+                            handleAnswer(true)
+                        }
                         color="primary"
                     />
                     <AppButton
                         title="X"
-                        onPress={ () => console.log("wrong")}
+                        onPress={ () => handleAnswer(false)}
                         color="secondary"
                     />
                 </View>
@@ -161,7 +160,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         position: "absolute",
         top: 80,
-        padding:36,
+        padding:40,
         lineHeight:32
     },
     resultText: {

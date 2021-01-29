@@ -3,7 +3,7 @@ export const decksList = {
     title: 'React',
     questions: [
       {
-        question: 'Can you use Typescript with React?',
+        question: 'Can you use Typescript with React ?',
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },

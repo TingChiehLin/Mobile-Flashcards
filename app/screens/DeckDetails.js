@@ -17,7 +17,6 @@ export default function DeckDetails({ route }) {
         state => state.decks.availableDecks
     )
     const deckID = decks[title];
-    console.log('------deckID-----',deckID);
     
     // let card = {
     //     question:"what ever you collected",

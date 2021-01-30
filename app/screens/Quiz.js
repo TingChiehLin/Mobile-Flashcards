@@ -17,10 +17,8 @@ Notifications.setNotificationHandler({
 
 const Quiz = ({ route }) => {
     const { title, questions } = route.params;
-    const [quizState, setQuizState] = useState('s');
-    const [isQuiz, setIsQuiz] = useState(false);
-    const [resultText, setresultText] = useState('0');
-   
+    const [ isQuiz, setIsQuiz ] = useState(false);
+
     const [state, setState] = useState({
         currentQuestion: 0,
         totalCorrect: 0,
@@ -28,7 +26,8 @@ const Quiz = ({ route }) => {
     })
 
     const finish = () => {
-        dispatch(finishQuiz(state));
+        // dispatch(finishQuiz(state));
+        setIsQuiz(true);
     }
 
     const handleAnswer = (answer) => {
@@ -98,12 +97,16 @@ const Quiz = ({ route }) => {
     if(isQuiz) {
         triggerNotificationHandler(300)
     } 
-
+   
     const quizResult = () => {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Quiz Result</Text>
-                <Text style={styles.resultText}>{`${resultText} %`}</Text>
+                <Text style={styles.resultText}>{
+                `${
+                    Math.round((state.totalCorrect) / (questions.length) * 100) 
+                } %`
+                }</Text>
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="Restart Quiz"

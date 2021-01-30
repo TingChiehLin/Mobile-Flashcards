@@ -27,15 +27,7 @@ const decksReducer = (state = initialState, action) => {
                 state, {
                    ...questions
             })
-
-        // questions: [
-        //     {
-        //       question: 'Can you use Typescript with React',
-        //       answer: [
-        //         { value: 'Yes', correct: true },
-        //         { value: 'No', correct: false },
-        //       ]
-        //     },
+    
         case actionType.DELETE_DECK:
             return updateObject(
                 state, {

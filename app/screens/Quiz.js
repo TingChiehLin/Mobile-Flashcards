@@ -17,37 +17,30 @@ Notifications.setNotificationHandler({
 
 const Quiz = ({ route }) => {
     const { title, questions } = route.params;
-    const [ isQuiz, setIsQuiz ] = useState(false);
+    const [ isQuizDone, setIsQuizDone ] = useState(false);
 
-    const [state, setState] = useState({
-        currentQuestion: 0,
-        totalCorrect: 0,
-        totalIncorrect: 0,
-    })
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [totalCorrect, setTotalCorrect] = useState(0)
+    const [totalIncorrect, setTotalIncorrect] = useState(0)
 
     const finish = () => {
         // dispatch(finishQuiz(state));
-        setIsQuiz(true);
+        setIsQuizDone(true);
+        console.log('done');
     }
 
     const handleAnswer = (answer) => {
         console.log('-------------------');
-        console.log(questions[state.currentQuestion].answer[state.currentQuestion].correct);
-        if (questions[state.currentQuestion].answer[state.currentQuestion].correct === answer) {
-          return setState({
-            totalCorrect: state.totalCorrect + 1,
-          });
+
+        if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
+            setTotalCorrect(totalCorrect + 1);
         } else {
-            setState({
-                totalIncorrect: state.totalIncorrect + 1,
-            })
+            setTotalIncorrect(totalIncorrect + 1)
         }
 
-        setState({
-            currentQuestions: state.currentQuestions + 1,
-        });
+        setCurrentQuestion(currentQuestion + 1);
 
-        if (state.currentQuestion === questions.length) {
+        if (currentQuestion === questions.length) {
             finish()
         }
     };
@@ -94,7 +87,7 @@ const Quiz = ({ route }) => {
         });
     };
 
-    if(isQuiz) {
+    if(isQuizDone) {
         triggerNotificationHandler(300)
     } 
    
@@ -104,7 +97,7 @@ const Quiz = ({ route }) => {
                 <Text style={styles.text}>Quiz Result</Text>
                 <Text style={styles.resultText}>{
                 `${
-                    Math.round((state.totalCorrect) / (questions.length) * 100) 
+                    Math.round((totalCorrect) / (questions.length) * 100) 
                 } %`
                 }</Text>
                 <View style={styles.buttonContainer}>
@@ -115,7 +108,7 @@ const Quiz = ({ route }) => {
                     />
                     <AppButton
                         title="Back to Deck"
-                        onPress={ () => setIsQuiz(true)}
+                        onPress={ () => setIsQuizDone(true)}
                         color="secondary"
                     />
                 </View>
@@ -126,7 +119,7 @@ const Quiz = ({ route }) => {
     const quizComponent = () => {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{questions[state.currentQuestion].question}
+                <Text style={styles.text}>{questions[currentQuestion].question}
                 </Text>
                 <View style={styles.buttonContainer}>
                     <AppButton
@@ -148,7 +141,7 @@ const Quiz = ({ route }) => {
 
     return (
         <View style={styles.container}>
-            {isQuiz ? quizResult() : quizComponent()}
+            {isQuizDone ? quizResult() : quizComponent()}
         </View>
     )
 }

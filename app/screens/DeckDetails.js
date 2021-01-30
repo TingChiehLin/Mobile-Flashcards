@@ -19,6 +19,11 @@ export default function DeckDetails({ route }) {
     const deckID = decks[title];
     console.log('------deckID-----',deckID);
     
+    // let card = {
+    //     question:"what ever you collected",
+    //     answer: "whate ever the answer was" 
+    // }
+
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>

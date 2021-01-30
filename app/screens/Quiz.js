@@ -21,34 +21,37 @@ const Quiz = ({ route }) => {
     const [isQuiz, setIsQuiz] = useState(false);
     const [resultText, setresultText] = useState('0');
    
-    console.log('---questions---',questions.length);
-
     const [state, setState] = useState({
         currentQuestion: 0,
         totalCorrect: 0,
         totalIncorrect: 0,
     })
 
-    const handleAnswer = (answer) => {
-        setState({
-          currentQuestions: state.currentQuestions + 1,
-        });
+    const finish = () => {
+        dispatch(finishQuiz(state));
+    }
 
-        if (questions[state.currentQuestion].answer[state.currentQuestion].correct) {
+    const handleAnswer = (answer) => {
+        console.log('-------------------');
+        console.log(questions[state.currentQuestion].answer[state.currentQuestion].correct);
+        if (questions[state.currentQuestion].answer[state.currentQuestion].correct === answer) {
           return setState({
             totalCorrect: state.totalCorrect + 1,
           });
+        } else {
+            setState({
+                totalIncorrect: state.totalIncorrect + 1,
+            })
         }
 
         setState({
-            totalIncorrect: state.totalIncorrect + 1,
+            currentQuestions: state.currentQuestions + 1,
         });
-    };
 
-    // finish = () => {
-    //     dispatch(finishQuiz(state));
-    // }
-    
+        if (state.currentQuestion === questions.length) {
+            finish()
+        }
+    };
 
     useEffect(() => {
         Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
@@ -86,7 +89,8 @@ const Quiz = ({ route }) => {
                 body: 'It is time to have a quiz',
             },
             trigger: {
-                seconds: time
+                seconds: time,
+                repeats: false
             }
         });
     };

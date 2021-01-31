@@ -49,7 +49,6 @@ const TabNavigator = () => {
                 <Tab.Screen 
                   name="DeckListView" 
                   component={stackNavigator}
-                  // options={{ tabBarVisible: false }}
                 />
                 <Tab.Screen name="Add Deck" component={addDeckNav} />
         </Tab.Navigator>

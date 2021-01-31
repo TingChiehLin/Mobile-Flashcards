@@ -5,7 +5,7 @@ import AppButton from '../component/AppButton/AppButton';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useNavigation } from '@react-navigation/native';
 
 Notifications.setNotificationHandler({
     handleNotification: async () => {
@@ -17,20 +17,24 @@ Notifications.setNotificationHandler({
 
 const Quiz = ({ route }) => {
     const { title, questions } = route.params;
-    const [ isQuizDone, setIsQuizDone ] = useState(false);
-
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [totalCorrect, setTotalCorrect] = useState(0)
     const [totalIncorrect, setTotalIncorrect] = useState(0)
 
+    const navigation = useNavigation();
+
     const finish = () => {
         // dispatch(finishQuiz(state));
-        setIsQuizDone(true);
         console.log('done');
     }
 
+    const handleRestart = () => {
+        setCurrentQuestion(0)
+        setTotalCorrect(0)
+        setTotalIncorrect(0)
+    }
+
     const handleAnswer = (answer) => {
-        console.log('-------------------');
 
         if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
             setTotalCorrect(totalCorrect + 1);
@@ -87,7 +91,7 @@ const Quiz = ({ route }) => {
         });
     };
 
-    if(isQuizDone) {
+    if(currentQuestion != questions.length) {
         triggerNotificationHandler(300)
     } 
    
@@ -103,12 +107,12 @@ const Quiz = ({ route }) => {
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="Restart Quiz"
-                        onPress={ () => console.log("Restart Quiz")}
+                        onPress={ () => handleRestart()}
                         color="primary"
                     />
                     <AppButton
-                        title="Back to Deck"
-                        onPress={ () => setIsQuizDone(true)}
+                        title="Back to Home"
+                        onPress={ () => navigation.navigate('Home')}
                         color="secondary"
                     />
                 </View>
@@ -141,7 +145,7 @@ const Quiz = ({ route }) => {
 
     return (
         <View style={styles.container}>
-            {isQuizDone ? quizResult() : quizComponent()}
+            {currentQuestion === questions.length ? quizResult() : quizComponent()}
         </View>
     )
 }

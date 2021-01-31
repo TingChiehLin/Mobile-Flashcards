@@ -20,7 +20,7 @@ const Quiz = ({ route }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [totalCorrect, setTotalCorrect] = useState(0)
     const [totalIncorrect, setTotalIncorrect] = useState(0)
-
+    const [tip, setTip] = useState(false)
     const navigation = useNavigation();
 
     const finish = () => {
@@ -120,11 +120,14 @@ const Quiz = ({ route }) => {
         )
     }
 
+    console.log(questions[currentQuestion].answerName )
+
     const quizComponent = () => {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>{questions[currentQuestion].question}
                 </Text>
+                <Text style={styles.tip}>{tip ? questions[currentQuestion].answerName : "No Tip"}</Text>
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="O"
@@ -137,6 +140,13 @@ const Quiz = ({ route }) => {
                         title="X"
                         onPress={ () => handleAnswer(false)}
                         color="secondary"
+                    />
+                    <AppButton
+                        title="Tip"
+                        onPress={ () => 
+                            setTip(true)
+                        }
+                        color="black"
                     />
                 </View>
             </View>
@@ -159,6 +169,13 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: "absolute",
         bottom: 50
+    },
+    tip: {
+        fontSize: 16,
+        padding:40,
+        position: "absolute",
+        top: 0,
+        color: 'tomato'
     },
     text: {
         fontSize: 24,

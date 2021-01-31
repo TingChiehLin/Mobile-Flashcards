@@ -20,15 +20,20 @@ export async function _getDecks () {
 //
 // saveDeckTitle: take in a single title argument and add it to the decks.
 export async function _saveDeckTitle(title) {
-  await AsyncStorage.mergeItem(
-    DECK_STORAGE_KEY,
-    JSON.stringify({
-      [title]: {
-        title,
-        questions: []
-      }
-    })
-  );
+
+  try {
+    await AsyncStorage.mergeItem(
+      DECK_STORAGE_KEY,
+      JSON.stringify({
+        [title]: {
+          title,
+          questions: []
+        }
+      })
+    );
+  } catch(err) {
+    console.log(err);
+  }
 }
 
 // dispatch to get all of decks

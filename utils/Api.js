@@ -7,14 +7,16 @@ export const decksList = {
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },
-        ]
+        ],
+        answerName: "Typescript has an auto detection"
       },
       {
         question: 'Is React.js better than Vue.js?',
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },
-        ]
+        ],
+        answerName: "To check the popular survey in 2021"
       }
     ]
   },
@@ -26,7 +28,8 @@ export const decksList = {
         answer: [
           { value: 'Yes', correct: true },
           { value: 'No', correct: false },
-        ]
+        ],
+        answerName: "closure is wonderful callback function."
       }
     ]
   }

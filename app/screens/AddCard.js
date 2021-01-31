@@ -31,6 +31,11 @@ const AddCard = ({ route }) => {
         }));
     }
 
+    let card = {
+        question:"what ever you collected",
+        answer: "whate ever the answer was" 
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.text}>What is your question?</Text>

@@ -43,3 +43,13 @@ export const _addDeck = (title) => async(dispatch) => {
   return dispatch(addDeckAction(title))
 }
 
+export async function removeDeck(deckId) {
+  const results = await AsyncStorage.getItem(DECK_STORAGE_KEY);
+  if (results) {
+    const data = JSON.parse(results);
+    const { [deckId]: remove } = data;
+    await AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+    return data;
+  }
+  return {};
+}

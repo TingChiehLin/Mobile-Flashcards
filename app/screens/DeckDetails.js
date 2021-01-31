@@ -18,11 +18,6 @@ export default function DeckDetails({ route }) {
     )
     const deckID = decks[title];
     
-    // let card = {
-    //     question:"what ever you collected",
-    //     answer: "whate ever the answer was" 
-    // }
-
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
@@ -47,8 +42,7 @@ export default function DeckDetails({ route }) {
             />
             <Text style={styles.text}
                 onPress={() =>
-                  console.log("Delete")
-                    
+                 dispatch(_delete_Deck(deckID))
             }
             >
                 Delete Deck

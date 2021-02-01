@@ -25,16 +25,13 @@ const AddCard = ({ route }) => {
             Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
             return
         }
-        dispatch(_add_cardToDeck({
+
+        dispatch(_add_cardToDeck(title, {
             title: questionName,
             answer: answerName
         }));
     }
 
-    let card = {
-        question:"what ever you collected",
-        answer: "whate ever the answer was" 
-    }
 
     return (
         <View style={styles.container}>

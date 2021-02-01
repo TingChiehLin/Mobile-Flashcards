@@ -29,7 +29,7 @@ export async function _saveDeckTitle(title) {
           title,
           questions: [],
           answerName
-        }
+        } 
       })
     );
   } catch(err) {

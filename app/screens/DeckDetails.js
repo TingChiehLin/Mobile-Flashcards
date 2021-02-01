@@ -41,9 +41,10 @@ export default function DeckDetails({ route }) {
                     color="primary"
             />
             <Text style={styles.text}
-                onPress={() =>
+                onPress={() => {
                  dispatch(_delete_Deck(deckID))
-            }
+                 navigation.navigate('Home')
+                }}
             >
                 Delete Deck
             </Text>

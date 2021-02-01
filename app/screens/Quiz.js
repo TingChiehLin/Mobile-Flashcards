@@ -120,7 +120,7 @@ const Quiz = ({ route }) => {
         )
     }
 
-    console.log(questions[currentQuestion].answerName)
+    // console.log(questions[currentQuestion].answerName)
 
     const quizComponent = () => {
         return (

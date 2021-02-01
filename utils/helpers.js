@@ -27,7 +27,8 @@ export async function _saveDeckTitle(title) {
       JSON.stringify({
         [title]: {
           title,
-          questions: []
+          questions: [],
+          answerName
         }
       })
     );

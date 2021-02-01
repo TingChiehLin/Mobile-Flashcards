@@ -30,7 +30,7 @@ const decksReducer = (state = initialState, action) => {
     
         case actionType.DELETE_DECK:
             const removeProp = action.deckId;
-            const { [removeProp]: remove } = state.availableDecks;
+            const { [removeProp]: remove, ...rest } = state.availableDecks;
             return updateObject(
                 state, {
                    ...availableDecks

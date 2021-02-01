@@ -120,14 +120,14 @@ const Quiz = ({ route }) => {
         )
     }
 
-    console.log(questions[currentQuestion].answerName )
+    console.log(questions[currentQuestion].answerName)
 
     const quizComponent = () => {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>{questions[currentQuestion].question}
                 </Text>
-                <Text style={styles.tip}>{tip ? questions[currentQuestion].answerName : "No Tip"}</Text>
+                <Text style={styles.tip}>{tip ? questions[currentQuestion].answerName : ""}</Text>
                 <View style={styles.buttonContainer}>
                     <AppButton
                         title="O"

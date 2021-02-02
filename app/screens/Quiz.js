@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
-
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
+import { _finishQuiz } from '../store/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-
-Notifications.setNotificationHandler({
-    handleNotification: async () => {
-        return {
-            shouldShowAlert: true
-        };
-    }
-});
 
 const Quiz = ({ route }) => {
     const { title, questions } = route.params;
@@ -21,11 +11,11 @@ const Quiz = ({ route }) => {
     const [totalCorrect, setTotalCorrect] = useState(0)
     const [totalIncorrect, setTotalIncorrect] = useState(0)
     const [tip, setTip] = useState(false)
+    const [isQuizDone, setisQuizDone] = useState(false);
     const navigation = useNavigation();
-
+    const dispatch = useDispatch();
     const finish = () => {
-        // dispatch(finishQuiz(state));
-        console.log('done');
+        dispatch(_finishQuiz(!isQuizDone));
     }
 
     const handleRestart = () => {
@@ -51,50 +41,8 @@ const Quiz = ({ route }) => {
         }
     };
 
-    useEffect(() => {
-        Permissions.getAsync(Permissions.NOTIFICATIONS).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return Permissions.askAsync(Permissions.NOTIFICATIONS);
-            }
-            return statusObj;
-        }).then(statusObj => {
-            if (statusObj.status !== 'granted') {
-                return;
-            }
-        });
-    },[]);
-
-    useEffect(() => {
-
-        const backgroundSubscription = Notifications.addNotificationReceivedListener(response => {
-            console.log(response)
-        });
-
-        const foregroundSubscription =  Notifications.addNotificationReceivedListener(notification => {
-            console.log(notification);
-        });
-
-        return () => {
-            foregroundSubscription.remove();
-            backgroundSubscription.remove();
-        };
-    },[]);
-
-    const triggerNotificationHandler = (time) => {
-        Notifications.scheduleNotificationAsync({
-            content: {
-                title: "Good Morning!",
-                body: 'It is time to have a quiz',
-            },
-            trigger: {
-                seconds: time,
-                repeats: false
-            }
-        });
-    };
-
     if(currentQuestion != questions.length) {
-        triggerNotificationHandler(300)
+        finish()
     } 
    
     const quizResult = () => {
@@ -121,8 +69,6 @@ const Quiz = ({ route }) => {
             </View>
         )
     }
-
-    // console.log(questions[currentQuestion].answerName)
 
     const quizComponent = () => {
         return (

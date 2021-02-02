@@ -11,7 +11,7 @@ export const showResult = async () => {
 }
 
 //Add Card
-export const addCardToDeckResult = async (title, card) => {
+export const addCardToDeckResult = (title, card) => {
     return {
         type: actionType.ADD_CARD,
         title: card.title,
@@ -20,10 +20,18 @@ export const addCardToDeckResult = async (title, card) => {
 }
 
 //delete
-export const deleteCardFromResult = async (deckId) => {
+export const deleteCardFromResult = (deckId) => {
     return { 
         type: actionType.DELETE_DECK,
         deckId
+    };
+}
+
+//QuizDone
+export const _quiz_done = (isquizeDone) => {
+    return {
+        type: actionType.QUIZ_DONE,
+        isquizeDone
     };
 }
 
@@ -59,8 +67,8 @@ export const _delete_Deck = (deckId) => {
 }
 
 //finishQuiz
-export const finishQuiz = () => {
+export const _finishQuiz = (isquizeDone) => {
     return async dispatch => {
-
+        await dispatch(_quiz_done(isquizeDone));
     };
 }

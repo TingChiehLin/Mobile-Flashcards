@@ -2,7 +2,8 @@ import * as actionType from '../actions/actionsType';
 import { updateObject } from '../../../utils/utility';
 
 const initialState = {
-    availableDecks:[]
+    availableDecks:[],
+    quizDone: false
 };
 
 const decksReducer = (state = initialState, action) => {
@@ -34,6 +35,11 @@ const decksReducer = (state = initialState, action) => {
             return updateObject(
                 state, {
                     availableDeck: rest
+            })
+        case actionType.QUIZ_DONE:
+            return updateObject(
+                state, {
+                    quizDone: action.isquizeDone
             })
         default:
             return state;

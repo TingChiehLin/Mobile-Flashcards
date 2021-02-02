@@ -28,7 +28,6 @@ export async function _saveDeckTitle(title) {
         [title]: {
           title,
           questions: [],
-          answerName
         } 
       })
     );

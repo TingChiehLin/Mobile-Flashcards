@@ -33,7 +33,7 @@ const decksReducer = (state = initialState, action) => {
             const { [removeProp]: remove, ...rest } = state.availableDecks;
             return updateObject(
                 state, {
-                   ...availableDecks
+                    availableDeck: rest
             })
         default:
             return state;

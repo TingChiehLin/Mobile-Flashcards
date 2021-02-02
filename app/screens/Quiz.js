@@ -38,8 +38,10 @@ const Quiz = ({ route }) => {
 
         if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
             setTotalCorrect(totalCorrect + 1);
+            setTip(false)
         } else {
             setTotalIncorrect(totalIncorrect + 1)
+            setTip(false)
         }
 
         setCurrentQuestion(currentQuestion + 1);
@@ -173,8 +175,6 @@ const styles = StyleSheet.create({
     tip: {
         fontSize: 16,
         padding:40,
-        position: "absolute",
-        top: 0,
         color: 'tomato'
     },
     text: {

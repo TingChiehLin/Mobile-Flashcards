@@ -31,10 +31,11 @@ const decksReducer = (state = initialState, action) => {
     
         case actionType.DELETE_DECK:
             const removeProp = action.deckId;
-            const { [removeProp]: remove, ...rest } = state.availableDecks;
+            const newDeck =  Object.keys(state.availableDecks).filter(e => e === removeProp)
+            //const { [removeProp]: remove, ...rest } = state.availableDecks;
             return updateObject(
                 state, {
-                    availableDeck: rest
+                    availableDeck: newDeck
             })
         case actionType.QUIZ_DONE:
             return updateObject(

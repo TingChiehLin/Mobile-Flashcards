@@ -27,7 +27,7 @@ export default function DeckDetails({ route }) {
             <AppButton
                     title="Add Card"
                     onPress={ () => navigation.navigate('AddCard',{
-                        title: deckID.title,
+                        title: deckID,
                         questions: deckID.questions
                     })}
                     color="secondary"

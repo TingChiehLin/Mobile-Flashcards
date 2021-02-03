@@ -3,16 +3,13 @@ import { View, TextInput, StyleSheet, Text, Alert} from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { _add_cardToDeck } from '../store/actions';
+import { useNavigation } from '@react-navigation/native';
 
 const AddCard = ({ route }) => {
     const { title, questions } = route.params;
     const [questionTitle, setquestionTitle] = useState('');
     const [answerName, setAnswerName] = useState('');
-
-    const cardQuestionTitle = title;
-    const cardQuestionQuestions = questions;
-    console.log('------cardQuestionTitle--------',cardQuestionTitle);
-    console.log('------cardQuestionQuestions--------',cardQuestionQuestions);
+    const navigation = useNavigation();
 
     const decks = useSelector(
         state => state.decks.availableDecks
@@ -26,10 +23,13 @@ const AddCard = ({ route }) => {
             return
         }
 
-        dispatch(_add_cardToDeck(title, {
-            title: questionTitle,
+        dispatch(_add_cardToDeck(title,
+        {
+            deckID: questionTitle,
             answer: answerName
         }));
+
+        navigation.goBack();
     }
 
 

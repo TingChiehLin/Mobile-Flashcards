@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import AppButton from '../component/AppButton/AppButton';
 import AppText from '../component/AppText/AppText';
 import colors from  '../config/color';
@@ -17,6 +17,29 @@ export default function DeckDetails({ route }) {
         state => state.decks.availableDecks
     )
     const deckID = decks[title];
+
+    const startQuiz = () => {
+        
+        if(number === 0) {
+            Alert.alert(
+                'You do not have any cards in the deck',
+                'Please add a card',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => console.log('Cancel Pressed'),
+                  }
+                ],
+                { cancelable: false }
+            );
+            return
+        }
+        
+        avigation.navigate('Quiz',{
+            title: deckID.title,
+            questions: deckID.questions
+        })
+    }
     
     return (
         <View style={styles.container}>
@@ -34,16 +57,15 @@ export default function DeckDetails({ route }) {
             />
             <AppButton
                     title="Start Quiz"
-                    onPress={ () => navigation.navigate('Quiz',{
-                        title: deckID.title,
-                        questions: deckID.questions
-                    })}
+                    onPress={ () => 
+                        startQuiz()
+                    }
                     color="primary"
             />
             <Text style={styles.text}
                 onPress={() => {
-                 dispatch(_delete_Deck(deckID.title))
-                 navigation.navigate('Home')
+                    dispatch(_delete_Deck(deckID.title))
+                    navigation.navigate('Home')
                 }}
             >
                 Delete Deck

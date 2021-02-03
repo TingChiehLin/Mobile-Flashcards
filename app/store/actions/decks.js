@@ -1,5 +1,5 @@
 import * as actionType from './actionsType';
-import { _getDecks, _addDeck , _saveDeckTitle, removeDeck } from '../../../utils/helpers';
+import { _getDecks, _addDeck , _saveDeckTitle, removeDeck, addCardToDeckStorage } from '../../../utils/helpers';
 
 //Action Creator
 export const showResult = async () => {
@@ -14,8 +14,7 @@ export const showResult = async () => {
 export const addCardToDeckResult = (title, card) => {
     return {
         type: actionType.ADD_CARD,
-        title: card.title,
-        card: card.answerName
+        card
     };
 }
 
@@ -50,9 +49,10 @@ export const _save_deck = (title) => {
     }
 }
 
-//Add Card
+//Add Card to Deck
 export const _add_cardToDeck = (deckId, card) => {
     return async dispatch => {
+        addCardToDeckStorage
         dispatch(await addCardToDeckResult(deckId, card))
     }
 }

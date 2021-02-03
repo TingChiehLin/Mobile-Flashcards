@@ -6,7 +6,7 @@ import { _add_cardToDeck } from '../store/actions';
 
 const AddCard = ({ route }) => {
     const { title, questions } = route.params;
-    const [questionName, setQuestionName] = useState('');
+    const [questionTitle, setquestionTitle] = useState('');
     const [answerName, setAnswerName] = useState('');
 
     const cardQuestionTitle = title;
@@ -21,13 +21,13 @@ const AddCard = ({ route }) => {
     const dispatch = useDispatch();
 
     const saveCard = () => {
-        if(!questionName || !answerName) {
+        if(!questionTitle || !answerName) {
             Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
             return
         }
 
         dispatch(_add_cardToDeck(title, {
-            title: questionName,
+            title: questionTitle,
             answer: answerName
         }));
     }
@@ -40,7 +40,7 @@ const AddCard = ({ route }) => {
                 clearButtonMode="always"
                 keyboardType="default"
                 maxLength={30}
-                onChangeText={text => setQuestionName(text)}
+                onChangeText={text => setquestionTitle(text)}
                 placeholder="Please Type Any Question"
                 style={styles.input}
             />

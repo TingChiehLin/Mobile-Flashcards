@@ -52,9 +52,30 @@ export async function removeDeck(deckId) {
   const results = await AsyncStorage.getItem(DECK_STORAGE_KEY);
   if (results) {
     const data = JSON.parse(results);
-    const { [deckId]: remove } = data;
-    await AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+    const { [deckId]: remove, ...rest } = data;
+    await AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(rest));
     return data;
   }
   return {};
 }
+
+// getDeck by title, and add new question
+// save new question in decks
+export async function addCardToDeckStorage(title, question) {
+  let decks = await _getDecks();
+// get the deck questions by using title
+  let deck = await getDeck(title);
+  let updatedDeck = {
+    title,
+    questions: [
+      ...deck.questions,
+      question
+    ]
+  }
+  let updatedDecks = {
+    ...decks,
+    [title]: updatedDeck
+  }
+  await AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(updatedDecks));
+  return updatedDecks;
+ }

@@ -19,7 +19,7 @@ const decksReducer = (state = initialState, action) => {
                     availableDecks: action.availableDecks
             })
         case actionType.ADD_CARD:
-            const {title, question} = action.cards; 
+            const {title, question} = action.card; 
             const questions = state.availableDecks;
             const questionToBeUpdated = questions[title];
             questionToBeUpdated[answer].value = questionToBeUpdated[answer].value.concat(question);

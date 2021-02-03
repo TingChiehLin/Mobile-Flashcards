@@ -42,7 +42,7 @@ export default function DeckDetails({ route }) {
             />
             <Text style={styles.text}
                 onPress={() => {
-                 dispatch(_delete_Deck(deckID))
+                 dispatch(_delete_Deck(deckID.title))
                  navigation.navigate('Home')
                 }}
             >

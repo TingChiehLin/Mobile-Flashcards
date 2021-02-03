@@ -11,10 +11,10 @@ export const showResult = async () => {
 }
 
 //Add Card
-export const addCardToDeckResult = (deckId, card) => {
+export const addCardToDeckResult = (deckID, card) => {
     return {
         type: actionType.ADD_CARD,
-        deckId,
+        deckID,
         questionTitle: card.questionTitle,
         answer: card.answer
     };

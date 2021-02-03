@@ -41,10 +41,6 @@ const Quiz = ({ route }) => {
         }
     };
 
-    if(currentQuestion != questions.length) {
-        finish()
-    } 
-   
     const quizResult = () => {
         return (
             <View style={styles.container}>

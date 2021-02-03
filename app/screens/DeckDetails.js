@@ -34,8 +34,8 @@ export default function DeckDetails({ route }) {
             );
             return
         }
-        
-        avigation.navigate('Quiz',{
+
+        navigation.navigate('Quiz',{
             title: deckID.title,
             questions: deckID.questions
         })

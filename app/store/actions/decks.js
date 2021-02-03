@@ -11,10 +11,12 @@ export const showResult = async () => {
 }
 
 //Add Card
-export const addCardToDeckResult = (title, card) => {
+export const addCardToDeckResult = (deckId, card) => {
     return {
         type: actionType.ADD_CARD,
-        card
+        deckId,
+        questionTitle: card.questionTitle,
+        answer: card.answer
     };
 }
 
@@ -52,7 +54,6 @@ export const _save_deck = (title) => {
 //Add Card to Deck
 export const _add_cardToDeck = (deckId, card) => {
     return async dispatch => {
-        addCardToDeckStorage
         dispatch(await addCardToDeckResult(deckId, card))
     }
 }

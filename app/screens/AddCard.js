@@ -22,10 +22,10 @@ const AddCard = ({ route }) => {
             Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
             return
         }
-
+        
         dispatch(_add_cardToDeck(title,
         {
-            deckID: questionTitle,
+            questionTitle: questionTitle,
             answer: answerName
         }));
 

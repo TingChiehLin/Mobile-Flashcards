@@ -25,24 +25,23 @@ const Quiz = ({ route }) => {
     }
 
     console.log('questions: -------',questions.length);
+    console.log('currentQuestion: -------',currentQuestion);
+    console.log('question: -------',questions);
 
     const handleAnswer = (answer) => {
         
-        if (currentQuestion === questions.length) {
-            finish()
-        }
-
         if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
-            setTotalCorrect(totalCorrect + 1);
+            setTotalCorrect(currentQuestion + 1);
             setTip(false)
         } else {
-            setTotalIncorrect(totalIncorrect + 1)
+            setTotalIncorrect(currentQuestion + 1);
             setTip(false)
         }
 
+        if ((currentQuestion) === questions.length) {
+            finish()
+        }
         setCurrentQuestion(currentQuestion + 1);
-        console.log('---------------currentQuestion:',currentQuestion);
-
     };
 
     const quizResult = () => {

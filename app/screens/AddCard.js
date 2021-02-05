@@ -17,19 +17,20 @@ const AddCard = ({ route }) => {
 
     const dispatch = useDispatch();
 
-    const saveCard = () => {
+    const saveCard = async () => {
         if(!questionTitle || !answerName) {
             Alert.alert('Invalid Title Name','Please Enter all the fields', [{text: 'Okay', style: 'destructive'}])
             return
         }
         
-        dispatch(_add_cardToDeck(title,
-        {
-            questionTitle: questionTitle,
-            answer: answerName
+        await dispatch(_add_cardToDeck(title,
+            {
+                questionTitle: questionTitle,
+                answer: answerName
         }));
+    
 
-        navigation.goBack();
+        navigation.navigate("DeckDetails",{ title });
     }
 
 

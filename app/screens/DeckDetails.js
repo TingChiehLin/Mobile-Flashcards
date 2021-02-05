@@ -12,7 +12,7 @@ export default function DeckDetails({ route }) {
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
-    const { title, number} = route.params;
+    const { title } = route.params;
     const decks = useSelector(
         state => state.decks.availableDecks
     )
@@ -20,7 +20,8 @@ export default function DeckDetails({ route }) {
 
     const startQuiz = () => {
         
-        if(number === 0) {
+        if(deckID.questions.length
+            === 0) {
             Alert.alert(
                 'You do not have any cards in the deck',
                 'Please add a card',
@@ -45,7 +46,7 @@ export default function DeckDetails({ route }) {
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.number}>{`${number} cards`}</Text>
+                <Text style={styles.number}>{`${deckID.questions.length} cards`}</Text>
             </View>
             <AppButton
                     title="Add Card"

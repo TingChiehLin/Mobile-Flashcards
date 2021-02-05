@@ -28,16 +28,20 @@ const decksReducer = (state = initialState, action) => {
             console.log("questionToBeUpdated", questionToBeUpdated)
             const newQuestion = {
                 question: questionTitle,
-                answerName: answer
+                answerName: answer,
+                answer: [
+                    { value: 'Yes', correct: true },
+                    { value: 'No', correct: false },
+                 ],
             }
 
-            questionToBeUpdated.questions = [...questionToBeUpdated.questions,newQuestion];
-            //let newUpdated = questionToBeUpdated.questions.concat(newQuestion);
+            //questionToBeUpdated.questions = [...questionToBeUpdated.questions, newQuestion];
+            let newUpdated = questionToBeUpdated.questions.concat(newQuestion);
             return updateObject(
                 state, {
                     // availableDecks: decksList
-                    ...questionToBeUpdated
-                    // ...newUpdated
+                    //...questionToBeUpdated
+                    ...newUpdated
             })
     
         case actionType.DELETE_DECK:

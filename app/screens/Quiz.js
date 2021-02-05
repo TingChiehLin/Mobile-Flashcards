@@ -24,7 +24,13 @@ const Quiz = ({ route }) => {
         setTotalIncorrect(0)
     }
 
+    console.log('questions: -------',questions.length);
+
     const handleAnswer = (answer) => {
+        
+        if (currentQuestion === questions.length) {
+            finish()
+        }
 
         if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
             setTotalCorrect(totalCorrect + 1);
@@ -35,10 +41,8 @@ const Quiz = ({ route }) => {
         }
 
         setCurrentQuestion(currentQuestion + 1);
+        console.log('---------------currentQuestion:',currentQuestion);
 
-        if (currentQuestion === questions.length) {
-            finish()
-        }
     };
 
     const quizResult = () => {
@@ -82,7 +86,9 @@ const Quiz = ({ route }) => {
                     />
                     <AppButton
                         title="X"
-                        onPress={ () => handleAnswer(false)}
+                        onPress={ () => 
+                            handleAnswer(false)
+                        }
                         color="secondary"
                     />
                     <AppButton

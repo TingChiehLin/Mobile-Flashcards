@@ -33,7 +33,6 @@ const AddCard = ({ route }) => {
         navigation.navigate("DeckDetails",{ title });
     }
 
-
     return (
         <View style={styles.container}>
             <Text style={styles.text}>What is your question?</Text>

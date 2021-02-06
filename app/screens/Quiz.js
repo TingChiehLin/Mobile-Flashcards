@@ -30,13 +30,14 @@ const Quiz = ({ route }) => {
 
     const handleAnswer = (answer) => {
         
-        if (questions[currentQuestion].answer[currentQuestion].correct === answer) {
+        if(questions[currentQuestion].correct === answer) {
             setTotalCorrect(currentQuestion + 1);
             setTip(false)
         } else {
             setTotalIncorrect(currentQuestion + 1);
             setTip(false)
         }
+        
 
         if ((currentQuestion) === questions.length) {
             finish()

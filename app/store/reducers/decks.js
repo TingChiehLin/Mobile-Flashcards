@@ -29,10 +29,7 @@ const decksReducer = (state = initialState, action) => {
             const newQuestion = {
                 question: questionTitle,
                 answerName: answer,
-                answer: [
-                    { value: 'Yes', correct: true },
-                    { value: 'No', correct: false },
-                 ],
+                correct: true
             }
             
             questionToBeUpdated.questions = [...questionToBeUpdated.questions, newQuestion];

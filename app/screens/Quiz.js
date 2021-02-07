@@ -24,10 +24,6 @@ const Quiz = ({ route }) => {
         setTotalIncorrect(0)
     }
 
-    console.log('questions: -------',questions.length);
-    console.log('currentQuestion: -------',currentQuestion);
-    console.log('question: -------',questions);
-
     const handleAnswer = (answer) => {
         
         if(questions[currentQuestion].correct === answer) {
@@ -74,6 +70,8 @@ const Quiz = ({ route }) => {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>{questions[currentQuestion].question}
+                </Text>
+                <Text style={styles.questionRemaining}>{"Quiz Number: " + (currentQuestion + 1) + " / " + (questions.length)}
                 </Text>
                 <Text style={styles.tip}>{tip ? questions[currentQuestion].answerName : ""}</Text>
                 <View style={styles.buttonContainer}>
@@ -131,6 +129,12 @@ const styles = StyleSheet.create({
         top: 80,
         padding:40,
         lineHeight:32
+    },
+    questionRemaining: {
+        position: "absolute",
+        top: 0,
+        padding:40,
+        fontWeight:'200'
     },
     resultText: {
         fontSize: 32,

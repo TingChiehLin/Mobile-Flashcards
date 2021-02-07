@@ -14,11 +14,6 @@ export default function WelcomeScreen({ navigation }) {
             source={require("../assets/background.jpg")}
         >
             <Text style={styles.tagline}>Flash to see your answer !</Text>
-            {/* <View style={styles.logoContainer}>
-                <SvgUri style={styles.logo} source={require('../assets/logo.svg')} />
-            </View> */}
-            {/* <AntDesign name="right" size={24} color="black" /> */}
-            {/* <AppText>Welcome to Flash Card Game !</AppText> */}
             <View style={styles.buttonsContainer}>
                 <AppButton
                     title="Start"

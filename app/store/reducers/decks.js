@@ -33,18 +33,14 @@ const decksReducer = (state = initialState, action) => {
             }
             
             questionToBeUpdated.questions = [...questionToBeUpdated.questions, newQuestion];
-            //let newUpdated = questionToBeUpdated.questions.concat(newQuestion);
             return updateObject(
                 state, {
-                    // availableDecks: decksList
                     ...questionToBeUpdated
-                    //...newUpdated
             })
     
         case actionType.DELETE_DECK:
             const removeProp = action.deckId;
             const newDeck =  Object.keys(state.availableDecks).filter(e => e === removeProp)
-            //const { [removeProp]: remove, ...rest } = state.availableDecks;
             return updateObject(
                 state, {
                     availableDeck: newDeck

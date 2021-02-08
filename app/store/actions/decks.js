@@ -21,10 +21,10 @@ export const addCardToDeckResult = (deckID, card) => {
 }
 
 //delete
-export const deleteCardFromResult = (deckId) => {
+export const deleteCardFromResult = (deckID) => {
     return { 
         type: actionType.DELETE_DECK,
-        deckId
+        removeObject: deckID
     };
 }
 
@@ -59,10 +59,10 @@ export const _add_cardToDeck = (deckId, card) => {
 }
 
 // Delete Deck
-export const _delete_Deck = (deckId) => {
+export const _delete_Deck = (deckID) => {
     return async dispatch => {
-        await removeDeck(deckId)
-        dispatch(await deleteCardFromResult(deckId))
+        await removeDeck(deckID)
+        dispatch(await deleteCardFromResult(deckID))
         dispatch(_deck_result())
     };
 }

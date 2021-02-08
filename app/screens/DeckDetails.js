@@ -41,7 +41,7 @@ export default function DeckDetails({ route }) {
             questions: deckID.questions
         })
     }
-    
+    console.log("deckID.questions",deckID.questions);
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>

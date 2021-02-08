@@ -41,12 +41,12 @@ export default function DeckDetails({ route }) {
             questions: deckID.questions
         })
     }
-    console.log("deckID.questions",deckID.questions);
+    
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.number}>{`${deckID.questions.length} cards`}</Text>
+                <Text style={styles.number}>{`${deckID && deckID.questions.length} cards`}</Text>
             </View>
             <AppButton
                     title="Add Card"

@@ -63,7 +63,6 @@ export const _delete_Deck = (deckID) => {
     return async dispatch => {
         await removeDeck(deckID)
         dispatch(await deleteCardFromResult(deckID))
-        dispatch(_deck_result())
     };
 }
 

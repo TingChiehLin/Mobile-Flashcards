@@ -1,4 +1,4 @@
-# Mobile Flash Card Project
+## Mobile Flash Card Project
 
 The Mobile Flashcards app allows you to create decks of flashcards which assist you to understand Web Development knowledge. This project is as part of the Udacity React Nanodegree.
 
@@ -11,9 +11,12 @@ The Mobile Flashcards app allows you to create decks of flashcards which assist 
 
 * Use [Expo](https://expo.io/)
 
-## Device
+## Tests
 
-- iPhone 12 Pro Max
+| Platform | Device                | Tested             |
+| :------- | :-------------------- | :----------------- |
+| iOS      | iPhone 12 (ios 12.4) | :white_check_mark: |
+| Android  | LG G3 (android 6.0)   | :white_check_mark: |
 
 ## Screenshots
 
